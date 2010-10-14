@@ -1,0 +1,39 @@
+[% TAGS star %]
+<div id="htgt_targ__attributepanel" style="display: none; width:100%; height:100%; overflow:auto;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please select columns to be included in the output and hit 'Results' when ready</b></div>
+<div id="htgt_targ__attributepages">
+
+  <input type="hidden" name="htgt_targ__attributepages__current_visible_section" value="[* session.param('htgt_targ__attributepages__current_visible_section') || 'htgt_targ__attributepanel__' *]" />
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// On initial page-load, set one att-page as the current visible one
+showPanelHideSiblings(document.mainform['htgt_targ__attributepages__current_visible_section'].value);
+
+// Also expand attribute-list for the active attpage for this dataset
+var attpage2expand;
+var attPageRadios = document.getElementsByName('htgt_targ__attributepage');
+for(var i=0;i < attPageRadios.length;i++) { 
+    if(attPageRadios[i].checked) {
+        attpage2expand = 'htgt_targ__'+attPageRadios[i].value;
+        break;
+    } 
+}
+expandListCompactSiblings(attpage2expand+'__attributelist');
+
+//]]>
+</script>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+[* default_attributepage_for_export = "${param_prefix}" *]

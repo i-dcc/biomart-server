@@ -1,0 +1,538 @@
+[% TAGS star %]
+<div id="kermits__attributepanel" style="display: none; width:100%; height:100%; overflow:auto;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please select columns to be included in the output and hit 'Results' when ready</b></div>
+	  	<input type="radio" style="display:none;" name="kermits__attributepage" value="attributes" 
+	  	onclick="
+  		if(this.checked) 
+	  	{ 
+  			showPanelHideSiblings('kermits__attributepanel__attributes'); 
+  			expandListCompactSiblings('kermits__attributes__attributelist'); 
+	  	} 
+	  	resetResultsPanel();"
+  		[* IF session.param("kermits__attributepage").defined 
+  		&& session.param("kermits__attributepage") == "attributes" *]
+ 		checked="checked" 
+		[* ELSIF "attributes" == "attributes" *]
+		checked="checked" 
+		[* END *]
+		/><div id="kermits__attributepages">
+
+  <input type="hidden" name="kermits__attributepages__current_visible_section" value="[* session.param('kermits__attributepages__current_visible_section') || 'kermits__attributepanel__attributes' *]" />
+
+<div id="kermits__attributepanel__attributes" style="display: none">
+
+[* all_attributepages.push("kermits__attributes") *]
+
+<div class="mart_attributepanel">
+
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}attributes__attributegroup.features", "Features", "show", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]attributes__attributecollection.gene">
+		<span class="mart_attributecollection_title">		Gene</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}attributes__attribute.sponsor__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.sponsor" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.sponsor'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.sponsor','Sponsor'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.sponsor'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.sponsor');
+  }  "/>Sponsor
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.marker_symbol__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.marker_symbol" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.marker_symbol'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.marker_symbol','Marker Symbol'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.marker_symbol'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.marker_symbol');
+  }  "/>Marker Symbol
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}attributes__attribute.ensembl_gene_id__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.ensembl_gene_id" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.ensembl_gene_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.ensembl_gene_id','Ensembl Gene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.ensembl_gene_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.ensembl_gene_id');
+  }  "/>Ensembl Gene ID
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.vega_gene_id__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.vega_gene_id" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.vega_gene_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.vega_gene_id','Vega Gene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.vega_gene_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.vega_gene_id');
+  }  "/>Vega Gene ID
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]attributes__attributecollection.escell_clone">
+		<span class="mart_attributecollection_title">		ES Cell Clone</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}attributes__attribute.escell_clone_name__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.escell_clone_name" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.escell_clone_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.escell_clone_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.escell_clone_name'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.escell_clone_name','ES Cell Clone Name'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.escell_clone_name'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.escell_clone_name');
+  }  "/>ES Cell Clone Name
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.allele_name__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.allele_name" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.escell_clone_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.escell_clone_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.allele_name'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.allele_name','Allele Name'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.allele_name'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.allele_name');
+  }  "/>Allele Name
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}attributes__attribute.escell_line__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.escell_line" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.escell_clone_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.escell_clone_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.escell_line'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.escell_line','ES Cell Line'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.escell_line'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.escell_line');
+  }  "/>ES Cell Line
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.escell_strain__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.escell_strain" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.escell_clone_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.escell_clone_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.escell_strain'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.escell_strain','ES Cell Strain'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.escell_strain'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.escell_strain');
+  }  "/>ES Cell Strain
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]attributes__attributecollection.microinjections">
+		<span class="mart_attributecollection_title">		Microinjections</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}attributes__attribute.mi_centre__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.mi_centre" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.mi_centre'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.mi_centre','Microinjection Centre'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.mi_centre'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.mi_centre');
+  }  "/>Microinjection Centre
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.attempt_number__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.attempt_number" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.attempt_number'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.attempt_number','Attempt Number'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.attempt_number'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.attempt_number');
+  }  "/>Attempt Number
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.mi_date__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.mi_date" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.mi_date'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.mi_date','Microinjection Date'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.mi_date'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.mi_date');
+  }  "/>Microinjection Date
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.colony_prefix__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.colony_prefix" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.colony_prefix'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.colony_prefix','Colony Prefix'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.colony_prefix'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.colony_prefix');
+  }  "/>Colony Prefix
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.blastocyst_strain__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.blastocyst_strain" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.blastocyst_strain'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.blastocyst_strain','Blastocyst Strain'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.blastocyst_strain'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.blastocyst_strain');
+  }  "/>Blastocyst Strain
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.test_cross_strain__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.test_cross_strain" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.test_cross_strain'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.test_cross_strain','Test Cross Strain'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.test_cross_strain'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.test_cross_strain');
+  }  "/>Test Cross Strain
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}attributes__attribute.back_cross_strain__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.back_cross_strain" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.back_cross_strain'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.back_cross_strain','Back cross strain'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.back_cross_strain'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.back_cross_strain');
+  }  "/>Back cross strain
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.status__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.status" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.status'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.status','Status'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.status'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.status');
+  }  "/>Status
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.status_code__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.status_code" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.status_code'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.status_code','Status Code'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.status_code'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.status_code');
+  }  "/>Status Code
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.distribution_centre__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.distribution_centre" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.distribution_centre'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.distribution_centre','Distribution Centre'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.distribution_centre'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.distribution_centre');
+  }  "/>Distribution Centre
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.emma__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.emma" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.microinjections_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.microinjections_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.emma'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.emma','Available From EMMA?'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.emma'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.emma');
+  }  "/>Available From EMMA?
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// Update summary-tree on side panel according to enabled-attributes info stored in 
+// the session OR the list of default attributes to pre-enable (if any).
+
+[* atts_to_check = session.param("${vs_param_prefix}attributes__attributelist") *]
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+//1: atts_to_check=     '[* atts_to_check || "[undef]" *]'
+//1: atts_to_check.size='[* atts_to_check.size() || "[undef]" *]'
+
+[* IF !atts_to_check || atts_to_check == ' ' *]
+  [* atts_to_check = ["${param_prefix}attributes__attribute.sponsor","${param_prefix}attributes__attribute.marker_symbol","${param_prefix}attributes__attribute.status"]  *]
+[* END *]
+       
+// default_attributes.join()='[* default_attributes.join('|') *]'
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+[* tmp_array = [] *]
+[* FOREACH att = atts_to_check *]
+  [* NEXT IF att == " " *]
+  [* tmp_array.push("'$att' : ''") *]
+[* END *]
+
+for(var attributeEltName in {
+
+[* tmp_array.join(",\n") *]
+
+}) {
+    var attributeCheckboxElt = document.mainform.elements[attributeEltName];
+    //alert('Updating summary panel with enabled attribute '+attributeEltName);
+    if(attributeCheckboxElt && attributeCheckboxElt.type == 'checkbox') {
+      attributeCheckboxElt.checked = 'checked';
+      attributeCheckboxElt.onchange();
+    }
+    else {
+        //alert('Checkbox for attribute '+attributeEltName+' not found, trying attcollection radio buttons instead');
+        var attributeRadiobuttonElt = document.mainform.elements[attributeEltName];
+        if(attributeRadiobuttonElt) {
+            //alert('Updating summary panel with enabled (radiobutton) attribute '+attributeEltName);
+            attributeRadiobuttonElt.click();
+        }
+    }
+}
+
+
+//]]>
+</script>
+
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// On initial page-load, set one att-page as the current visible one
+showPanelHideSiblings(document.mainform['kermits__attributepages__current_visible_section'].value);
+
+// Also expand attribute-list for the active attpage for this dataset
+var attpage2expand;
+var attPageRadios = document.getElementsByName('kermits__attributepage');
+for(var i=0;i < attPageRadios.length;i++) { 
+    if(attPageRadios[i].checked) {
+        attpage2expand = 'kermits__'+attPageRadios[i].value;
+        break;
+    } 
+}
+expandListCompactSiblings(attpage2expand+'__attributelist');
+
+//]]>
+</script>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+[* default_attributepage_for_export = "${param_prefix}attributes" *]

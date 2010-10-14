@@ -1,0 +1,487 @@
+[% TAGS star %]
+
+
+
+
+[* param_prefix = param_prefix || '' # just so we don't get undef-errors if no prefix is specified *]
+[* js_session_value_of_filtermenu = {} *]
+
+<div id="htgt_trap__filterpanel" style="display: none; width:100%; height:100%; overflow:auto; position: relative;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please restrict your query using criteria below</b></div>
+
+<div class="mart_filterpanel">
+		
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.gene", "Gene", "hide", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.identifiers">
+		
+<div class="mart_filter" id="htgt_trap__filter.identifier_filters__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.identifiers" value="on" 
+[* IF session.param("${param_prefix}filtercollection.identifiers") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.identifiers'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.identifiers'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.identifiers'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.identifiers'); 
+	}" />
+  Gene/Marker Identifiers   <br/>
+   <img name="htgt_trap__filter.identifier_filters__image" src="/martview/images/blank.gif" alt=""/>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="htgt_trap__filter.identifier_filters">
+		<div style="float: left">
+
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "htgt_trap__filter.identifier_filters" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("htgt_trap__filter.identifier_filters") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("htgt_trap__filter.identifier_filters").defined() 
+           && ( session.param("htgt_trap__filter.identifier_filters") != '' ) )
+      || ( session.param("htgt_trap__filter.identifier_filters").size() 
+           && ( session.param("htgt_trap__filter.identifier_filters").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("htgt_trap__filter.identifier_filters") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="htgt_trap__filter.identifier_filters" id="idTag__htgt_trap__filtercollection.identifiers" onchange="addOnceTouchedParam('htgt_trap__filter.identifier_filters__onceTouched');updateMenuPushactions(this, htgt_trap__pushActionsOfFiltermenu, htgt_trap__sessionValueOfFiltermenu);for(var i=0; i<this.options.length; i++) {    removeFromSummaryPanelList('htgt_trap__filterlist', 'htgt_trap__filter.'+this.options[i].value); };checkFilterCollectionCheckbox('htgt_trap__filtercollection.identifiers');" >
+
+
+	
+	<option value="marker_symbol"
+
+>Marker Symbol</option>
+
+	
+	<option value="mgi_accession_id"
+
+>MGI Accession ID</option>
+
+	
+	<option value="ensembl_gene_id"
+
+>Ensembl Gene ID</option>
+
+	
+	<option value="vega_gene_id"
+
+>Vega Gene ID</option>
+
+	
+	<option value="entrez_gene_id"
+
+>Entrez Gene ID</option>
+</select>
+		<br /><textarea name="htgt_trap__filter.identifier_filters__text" cols="25" rows="4" onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('htgt_trap__filtercollection.identifiers');};">
+[* session.param("htgt_trap__filter.identifier_filters__text") || '' *]
+</textarea>
+<br /><input type="file" name="htgt_trap__filter.identifier_filters__text__file" value="" size="16" onchange="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('htgt_trap__filtercollection.identifiers');};" />
+<input type="hidden" name="upload_file_params" value="htgt_trap__filter.identifier_filters__text__file" />
+
+
+
+			</div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.is_trapped">
+		
+<div class="mart_filter" id="htgt_trap__filter.is_trapped__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.is_trapped" value="on" 
+[* IF session.param("${param_prefix}filtercollection.is_trapped") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.is_trapped'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.is_trapped'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.is_trapped'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.is_trapped'); 
+	}" />
+  <a title="Use this filter to only return genes that have a trapped ES cell associated with them.">Is Trapped?</a>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="htgt_trap__filter.is_trapped">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "htgt_trap__filter.is_trapped" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("htgt_trap__filter.is_trapped") || "1" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("htgt_trap__filter.is_trapped").defined() 
+           && ( session.param("htgt_trap__filter.is_trapped") != '' ) )
+      || ( session.param("htgt_trap__filter.is_trapped").size() 
+           && ( session.param("htgt_trap__filter.is_trapped").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("htgt_trap__filter.is_trapped") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="htgt_trap__filter.is_trapped" id="idTag__htgt_trap__filtercollection.is_trapped" onchange="addOnceTouchedParam('htgt_trap__filter.is_trapped__onceTouched');updateMenuPushactions(this, htgt_trap__pushActionsOfFiltermenu, htgt_trap__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('htgt_trap__filtercollection.is_trapped');" >
+
+
+	
+	<option value="1"
+
+>yes</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.chromosome">
+		
+<div class="mart_filter" id="htgt_trap__filter.chromosome__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.chromosome" value="on" 
+[* IF session.param("${param_prefix}filtercollection.chromosome") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.chromosome'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.chromosome'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.chromosome'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.chromosome'); 
+	}" />
+  Chromosome
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="htgt_trap__filter.chromosome">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "htgt_trap__filter.chromosome" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("htgt_trap__filter.chromosome") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("htgt_trap__filter.chromosome").defined() 
+           && ( session.param("htgt_trap__filter.chromosome") != '' ) )
+      || ( session.param("htgt_trap__filter.chromosome").size() 
+           && ( session.param("htgt_trap__filter.chromosome").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("htgt_trap__filter.chromosome") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="htgt_trap__filter.chromosome" id="idTag__htgt_trap__filtercollection.chromosome" onchange="addOnceTouchedParam('htgt_trap__filter.chromosome__onceTouched');updateMenuPushactions(this, htgt_trap__pushActionsOfFiltermenu, htgt_trap__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('htgt_trap__filtercollection.chromosome');" >
+
+
+	
+	<option value="1"
+
+>1</option>
+
+	
+	<option value="2"
+
+>2</option>
+
+	
+	<option value="3"
+
+>3</option>
+
+	
+	<option value="4"
+
+>4</option>
+
+	
+	<option value="5"
+
+>5</option>
+
+	
+	<option value="6"
+
+>6</option>
+
+	
+	<option value="7"
+
+>7</option>
+
+	
+	<option value="8"
+
+>8</option>
+
+	
+	<option value="9"
+
+>9</option>
+
+	
+	<option value="10"
+
+>10</option>
+
+	
+	<option value="11"
+
+>11</option>
+
+	
+	<option value="12"
+
+>12</option>
+
+	
+	<option value="13"
+
+>13</option>
+
+	
+	<option value="14"
+
+>14</option>
+
+	
+	<option value="15"
+
+>15</option>
+
+	
+	<option value="16"
+
+>16</option>
+
+	
+	<option value="17"
+
+>17</option>
+
+	
+	<option value="18"
+
+>18</option>
+
+	
+	<option value="19"
+
+>19</option>
+
+	
+	<option value="X"
+
+>X</option>
+
+	
+	<option value="Y"
+
+>Y</option>
+
+	
+	<option value="MT"
+
+>MT</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.escell_clone", "ES Cell Clone", "", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.escell_clone_name">
+		
+<div class="mart_filter" id="htgt_trap__filter.escell_clone_name__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.escell_clone_name" value="on" 
+[* IF session.param("${param_prefix}filtercollection.escell_clone_name") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.escell_clone_name'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.escell_clone_name'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.escell_clone_name'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.escell_clone_name'); 
+	}" />
+  ES Cell Clone Name
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="htgt_trap__filter.escell_clone_name">
+<input type="text" name="htgt_trap__filter.escell_clone_name" value="
+[* IF session.param("htgt_trap__filter.escell_clone_name").defined() *]
+  [* session.param("htgt_trap__filter.escell_clone_name") *]
+[* ELSE *][* END *]
+" 
+
+
+		onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('htgt_trap__filtercollection.escell_clone_name');};" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+      <script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// All pushaction-info collected from filter-configs, as one big hash
+var ${param_prefix}pushActionsOfFiltermenu = {};
+
+// Set up list of selected options for pushaction-menus as stored in session. Needed to
+// set the selected option for those menus in the pa-updating function.
+var ${param_prefix}sessionValueOfFiltermenu = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+
+// Initial update of all pushaction-menus on page load
+  //  foreach menu in big pushaction-info hash
+for(var pa_menuname in ${param_prefix}pushActionsOfFiltermenu) {
+   var pa_menu = document.mainform.elements[pa_menuname];
+   
+   if(pa_menu) {
+	 //  alert("getting pa-info for menu " + pa_menuname + ", obj " + pa_menu);
+      updateMenuPushactions(pa_menu, ${param_prefix}pushActionsOfFiltermenu, ${param_prefix}sessionValueOfFiltermenu);
+   }
+}
+
+
+[* filts_to_check = session.param("${param_prefix}filtercollections") *]
+[* IF !filts_to_check || filts_to_check == ' ' *]
+	[* filts_to_check = ["${param_prefix}filtercollection.is_trapped"]  *]
+[* END *]
+[* tmp_array = [] *]
+[* FOREACH filt = filts_to_check *]
+	[* NEXT IF filt == " " *]
+		[* tmp_array.push("'$filt' : ''") *]
+[* END *]
+
+//]]>
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+	// setting the options of selectMenus to checked 
+	var ${param_prefix}sessionValueOfFiltermenu_1 = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		updateSelectMenu(filterCollectionEltName, ${param_prefix}sessionValueOfFiltermenu_1);
+	}	
+
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+// Update summary-tree on side panel according to info stored in the session, defer works for internet explorer OPERATION ABORTED ERROR
+
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		//alert('Updating filters in fcollection '+filterCollectionEltName);
+   		//enableFiltersInCollection(filterCollectionEltName);
+		//This enableFiltersUpdateSummaryPanel function is not defined anywhere? [why ? It is there in javascript....]
+		enableFiltersUpdateSummaryPanel(filterCollectionEltName);
+	}
+	
+</script>
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+

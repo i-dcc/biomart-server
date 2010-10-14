@@ -1,0 +1,295 @@
+[% TAGS star %]
+<div id="bacs__attributepanel" style="display: none; width:100%; height:100%; overflow:auto;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please select columns to be included in the output and hit 'Results' when ready</b></div>
+	  	<input type="radio" style="display:none;" name="bacs__attributepage" value="attributes" 
+	  	onclick="
+  		if(this.checked) 
+	  	{ 
+  			showPanelHideSiblings('bacs__attributepanel__attributes'); 
+  			expandListCompactSiblings('bacs__attributes__attributelist'); 
+	  	} 
+	  	resetResultsPanel();"
+  		[* IF session.param("bacs__attributepage").defined 
+  		&& session.param("bacs__attributepage") == "attributes" *]
+ 		checked="checked" 
+		[* ELSIF "attributes" == "attributes" *]
+		checked="checked" 
+		[* END *]
+		/><div id="bacs__attributepages">
+
+  <input type="hidden" name="bacs__attributepages__current_visible_section" value="[* session.param('bacs__attributepages__current_visible_section') || 'bacs__attributepanel__attributes' *]" />
+
+<div id="bacs__attributepanel__attributes" style="display: none">
+
+[* all_attributepages.push("bacs__attributes") *]
+
+<div class="mart_attributepanel">
+
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}attributes__attributegroup.features", "FEATURES", "show", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]attributes__attributecollection.gene_details">
+		<span class="mart_attributecollection_title">		Gene Details</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}attributes__attribute.marker_symbol__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.marker_symbol" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_details_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_details_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.marker_symbol'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.marker_symbol','Marker symbol'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.marker_symbol'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.marker_symbol');
+  }  "/>Marker symbol
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}attributes__attribute.num_products_per_gene__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.num_products_per_gene" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_details_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_details_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.num_products_per_gene'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.num_products_per_gene','No. Products per Gene'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.num_products_per_gene'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.num_products_per_gene');
+  }  "/>No. Products per Gene
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]attributes__attributecollection.products">
+		<span class="mart_attributecollection_title">		Products</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}attributes__attribute.library__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.library" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.products_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.products_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.library'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.library','Library'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.library'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.library');
+  }  "/>Library
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.chromosome__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.chromosome" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.products_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.products_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.chromosome'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.chromosome','Chromosome'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.chromosome'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.chromosome');
+  }  "/>Chromosome
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.strand__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.strand" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.products_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.products_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.strand'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.strand','Strand'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.strand'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.strand');
+  }  "/>Strand
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}attributes__attribute.start__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.start" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.products_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.products_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.start'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.start','Start'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.start'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.start');
+  }  "/>Start
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.end__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.end" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.products_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.products_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.end'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.end','End'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.end'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.end');
+  }  "/>End
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// Update summary-tree on side panel according to enabled-attributes info stored in 
+// the session OR the list of default attributes to pre-enable (if any).
+
+[* atts_to_check = session.param("${vs_param_prefix}attributes__attributelist") *]
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+//1: atts_to_check=     '[* atts_to_check || "[undef]" *]'
+//1: atts_to_check.size='[* atts_to_check.size() || "[undef]" *]'
+
+[* IF !atts_to_check || atts_to_check == ' ' *]
+  [* atts_to_check = []  *]
+[* END *]
+       
+// default_attributes.join()='[* default_attributes.join('|') *]'
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+[* tmp_array = [] *]
+[* FOREACH att = atts_to_check *]
+  [* NEXT IF att == " " *]
+  [* tmp_array.push("'$att' : ''") *]
+[* END *]
+
+for(var attributeEltName in {
+
+[* tmp_array.join(",\n") *]
+
+}) {
+    var attributeCheckboxElt = document.mainform.elements[attributeEltName];
+    //alert('Updating summary panel with enabled attribute '+attributeEltName);
+    if(attributeCheckboxElt && attributeCheckboxElt.type == 'checkbox') {
+      attributeCheckboxElt.checked = 'checked';
+      attributeCheckboxElt.onchange();
+    }
+    else {
+        //alert('Checkbox for attribute '+attributeEltName+' not found, trying attcollection radio buttons instead');
+        var attributeRadiobuttonElt = document.mainform.elements[attributeEltName];
+        if(attributeRadiobuttonElt) {
+            //alert('Updating summary panel with enabled (radiobutton) attribute '+attributeEltName);
+            attributeRadiobuttonElt.click();
+        }
+    }
+}
+
+
+//]]>
+</script>
+
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// On initial page-load, set one att-page as the current visible one
+showPanelHideSiblings(document.mainform['bacs__attributepages__current_visible_section'].value);
+
+// Also expand attribute-list for the active attpage for this dataset
+var attpage2expand;
+var attPageRadios = document.getElementsByName('bacs__attributepage');
+for(var i=0;i < attPageRadios.length;i++) { 
+    if(attPageRadios[i].checked) {
+        attpage2expand = 'bacs__'+attPageRadios[i].value;
+        break;
+    } 
+}
+expandListCompactSiblings(attpage2expand+'__attributelist');
+
+//]]>
+</script>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+[* default_attributepage_for_export = "${param_prefix}attributes" *]

@@ -1,0 +1,88 @@
+[% TAGS star %]
+
+
+
+
+[* param_prefix = param_prefix || '' # just so we don't get undef-errors if no prefix is specified *]
+[* js_session_value_of_filtermenu = {} *]
+
+<div id="htgt_targ__filterpanel" style="display: none; width:100%; height:100%; overflow:auto; position: relative;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please restrict your query using criteria below</b></div>
+
+<div class="mart_filterpanel">
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// All pushaction-info collected from filter-configs, as one big hash
+var ${param_prefix}pushActionsOfFiltermenu = {};
+
+// Set up list of selected options for pushaction-menus as stored in session. Needed to
+// set the selected option for those menus in the pa-updating function.
+var ${param_prefix}sessionValueOfFiltermenu = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+
+// Initial update of all pushaction-menus on page load
+  //  foreach menu in big pushaction-info hash
+for(var pa_menuname in ${param_prefix}pushActionsOfFiltermenu) {
+   var pa_menu = document.mainform.elements[pa_menuname];
+   
+   if(pa_menu) {
+	 //  alert("getting pa-info for menu " + pa_menuname + ", obj " + pa_menu);
+      updateMenuPushactions(pa_menu, ${param_prefix}pushActionsOfFiltermenu, ${param_prefix}sessionValueOfFiltermenu);
+   }
+}
+
+
+[* filts_to_check = session.param("${param_prefix}filtercollections") *]
+[* IF !filts_to_check || filts_to_check == ' ' *]
+	[* filts_to_check = []  *]
+[* END *]
+[* tmp_array = [] *]
+[* FOREACH filt = filts_to_check *]
+	[* NEXT IF filt == " " *]
+		[* tmp_array.push("'$filt' : ''") *]
+[* END *]
+
+//]]>
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+	// setting the options of selectMenus to checked 
+	var ${param_prefix}sessionValueOfFiltermenu_1 = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		updateSelectMenu(filterCollectionEltName, ${param_prefix}sessionValueOfFiltermenu_1);
+	}	
+
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+// Update summary-tree on side panel according to info stored in the session, defer works for internet explorer OPERATION ABORTED ERROR
+
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		//alert('Updating filters in fcollection '+filterCollectionEltName);
+   		//enableFiltersInCollection(filterCollectionEltName);
+		//This enableFiltersUpdateSummaryPanel function is not defined anywhere? [why ? It is there in javascript....]
+		enableFiltersUpdateSummaryPanel(filterCollectionEltName);
+	}
+	
+</script>
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+

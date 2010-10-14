@@ -1,0 +1,438 @@
+[% TAGS star %]
+
+
+
+
+[* param_prefix = param_prefix || '' # just so we don't get undef-errors if no prefix is specified *]
+[* js_session_value_of_filtermenu = {} *]
+
+<div id="bacs__filterpanel" style="display: none; width:100%; height:100%; overflow:auto; position: relative;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please restrict your query using criteria below</b></div>
+
+<div class="mart_filterpanel">
+		
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.filters", "FILTERS", "show", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.marker_symbol">
+		
+<div class="mart_filter" id="bacs__filter.marker_symbol__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.marker_symbol" value="on" 
+[* IF session.param("${param_prefix}filtercollection.marker_symbol") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.marker_symbol'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.marker_symbol'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.marker_symbol'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.marker_symbol'); 
+	}" />
+  Marker Symbol
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="bacs__filter.marker_symbol">
+<textarea name="bacs__filter.marker_symbol" cols="25" rows="4" onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('bacs__filtercollection.marker_symbol');};">
+[* session.param("bacs__filter.marker_symbol") || '' *]
+</textarea>
+<br /><input type="file" name="bacs__filter.marker_symbol__file" value="" size="16" onchange="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('bacs__filtercollection.marker_symbol');};" />
+<input type="hidden" name="upload_file_params" value="bacs__filter.marker_symbol__file" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.chromosome">
+		
+<div class="mart_filter" id="bacs__filter.chromosome__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.chromosome" value="on" 
+[* IF session.param("${param_prefix}filtercollection.chromosome") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.chromosome'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.chromosome'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.chromosome'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.chromosome'); 
+	}" />
+  Chromosome
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="bacs__filter.chromosome">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "bacs__filter.chromosome" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("bacs__filter.chromosome") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("bacs__filter.chromosome").defined() 
+           && ( session.param("bacs__filter.chromosome") != '' ) )
+      || ( session.param("bacs__filter.chromosome").size() 
+           && ( session.param("bacs__filter.chromosome").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("bacs__filter.chromosome") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="bacs__filter.chromosome" id="idTag__bacs__filtercollection.chromosome" onchange="addOnceTouchedParam('bacs__filter.chromosome__onceTouched');updateMenuPushactions(this, bacs__pushActionsOfFiltermenu, bacs__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('bacs__filtercollection.chromosome');" >
+
+
+	
+	<option value="1"
+
+>1</option>
+
+	
+	<option value="2"
+
+>2</option>
+
+	
+	<option value="3"
+
+>3</option>
+
+	
+	<option value="4"
+
+>4</option>
+
+	
+	<option value="5"
+
+>5</option>
+
+	
+	<option value="6"
+
+>6</option>
+
+	
+	<option value="7"
+
+>7</option>
+
+	
+	<option value="8"
+
+>8</option>
+
+	
+	<option value="9"
+
+>9</option>
+
+	
+	<option value="10"
+
+>10</option>
+
+	
+	<option value="11"
+
+>11</option>
+
+	
+	<option value="12"
+
+>12</option>
+
+	
+	<option value="13"
+
+>13</option>
+
+	
+	<option value="14"
+
+>14</option>
+
+	
+	<option value="15"
+
+>15</option>
+
+	
+	<option value="16"
+
+>16</option>
+
+	
+	<option value="17"
+
+>17</option>
+
+	
+	<option value="18"
+
+>18</option>
+
+	
+	<option value="19"
+
+>19</option>
+
+	
+	<option value="X"
+
+>X</option>
+
+	
+	<option value="Y"
+
+>Y</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.strand">
+		
+<div class="mart_filter" id="bacs__filter.strand__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.strand" value="on" 
+[* IF session.param("${param_prefix}filtercollection.strand") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.strand'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.strand'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.strand'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.strand'); 
+	}" />
+  Strand
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="bacs__filter.strand">
+<input type="text" name="bacs__filter.strand" value="
+[* IF session.param("bacs__filter.strand").defined() *]
+  [* session.param("bacs__filter.strand") *]
+[* ELSE *][* END *]
+" 
+
+
+		onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('bacs__filtercollection.strand');};" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.library">
+		
+<div class="mart_filter" id="bacs__filter.library__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.library" value="on" 
+[* IF session.param("${param_prefix}filtercollection.library") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.library'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.library'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.library'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.library'); 
+	}" />
+  Library
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="bacs__filter.library">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "bacs__filter.library" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("bacs__filter.library") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("bacs__filter.library").defined() 
+           && ( session.param("bacs__filter.library") != '' ) )
+      || ( session.param("bacs__filter.library").size() 
+           && ( session.param("bacs__filter.library").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("bacs__filter.library") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="bacs__filter.library" id="idTag__bacs__filtercollection.library" onchange="addOnceTouchedParam('bacs__filter.library__onceTouched');updateMenuPushactions(this, bacs__pushActionsOfFiltermenu, bacs__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('bacs__filtercollection.library');" >
+
+
+	
+	<option value="129S7"
+
+>129S7</option>
+
+	
+	<option value="C57Bl/6J"
+
+>C57Bl/6J</option>
+
+	
+	<option value="MICER"
+
+>MICER</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+      <script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// All pushaction-info collected from filter-configs, as one big hash
+var ${param_prefix}pushActionsOfFiltermenu = {};
+
+// Set up list of selected options for pushaction-menus as stored in session. Needed to
+// set the selected option for those menus in the pa-updating function.
+var ${param_prefix}sessionValueOfFiltermenu = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+
+// Initial update of all pushaction-menus on page load
+  //  foreach menu in big pushaction-info hash
+for(var pa_menuname in ${param_prefix}pushActionsOfFiltermenu) {
+   var pa_menu = document.mainform.elements[pa_menuname];
+   
+   if(pa_menu) {
+	 //  alert("getting pa-info for menu " + pa_menuname + ", obj " + pa_menu);
+      updateMenuPushactions(pa_menu, ${param_prefix}pushActionsOfFiltermenu, ${param_prefix}sessionValueOfFiltermenu);
+   }
+}
+
+
+[* filts_to_check = session.param("${param_prefix}filtercollections") *]
+[* IF !filts_to_check || filts_to_check == ' ' *]
+	[* filts_to_check = []  *]
+[* END *]
+[* tmp_array = [] *]
+[* FOREACH filt = filts_to_check *]
+	[* NEXT IF filt == " " *]
+		[* tmp_array.push("'$filt' : ''") *]
+[* END *]
+
+//]]>
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+	// setting the options of selectMenus to checked 
+	var ${param_prefix}sessionValueOfFiltermenu_1 = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		updateSelectMenu(filterCollectionEltName, ${param_prefix}sessionValueOfFiltermenu_1);
+	}	
+
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+// Update summary-tree on side panel according to info stored in the session, defer works for internet explorer OPERATION ABORTED ERROR
+
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		//alert('Updating filters in fcollection '+filterCollectionEltName);
+   		//enableFiltersInCollection(filterCollectionEltName);
+		//This enableFiltersUpdateSummaryPanel function is not defined anywhere? [why ? It is there in javascript....]
+		enableFiltersUpdateSummaryPanel(filterCollectionEltName);
+	}
+	
+</script>
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+

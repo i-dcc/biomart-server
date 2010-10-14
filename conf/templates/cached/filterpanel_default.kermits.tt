@@ -1,0 +1,1468 @@
+[% TAGS star %]
+
+
+
+
+[* param_prefix = param_prefix || '' # just so we don't get undef-errors if no prefix is specified *]
+[* js_session_value_of_filtermenu = {} *]
+
+<div id="kermits__filterpanel" style="display: none; width:100%; height:100%; overflow:auto; position: relative;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please restrict your query using criteria below</b></div>
+
+<div class="mart_filterpanel">
+		
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.gene", "Gene", "hide", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.sponsor">
+		
+<div class="mart_filter" id="kermits__filter.sponsor__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.sponsor" value="on" 
+[* IF session.param("${param_prefix}filtercollection.sponsor") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.sponsor'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.sponsor'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.sponsor'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.sponsor'); 
+	}" />
+  Sponsor
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.sponsor">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.sponsor" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.sponsor") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.sponsor").defined() 
+           && ( session.param("kermits__filter.sponsor") != '' ) )
+      || ( session.param("kermits__filter.sponsor").size() 
+           && ( session.param("kermits__filter.sponsor").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.sponsor") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.sponsor" id="idTag__kermits__filtercollection.sponsor" onchange="addOnceTouchedParam('kermits__filter.sponsor__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.sponsor');" >
+
+
+	
+	<option value="EUCOMM"
+
+>EUCOMM</option>
+
+	
+	<option value="KOMP"
+
+>KOMP</option>
+
+	
+	<option value="SANGER_FACULTY"
+
+>Sanger Faculty</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.identifiers">
+		
+<div class="mart_filter" id="kermits__filter.identifier_filters__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.identifiers" value="on" 
+[* IF session.param("${param_prefix}filtercollection.identifiers") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.identifiers'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.identifiers'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.identifiers'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.identifiers'); 
+	}" />
+  Gene/Marker Identifiers   <br/>
+   <img name="kermits__filter.identifier_filters__image" src="/martview/images/blank.gif" alt=""/>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.identifier_filters">
+		<div style="float: left">
+
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.identifier_filters" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.identifier_filters") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.identifier_filters").defined() 
+           && ( session.param("kermits__filter.identifier_filters") != '' ) )
+      || ( session.param("kermits__filter.identifier_filters").size() 
+           && ( session.param("kermits__filter.identifier_filters").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.identifier_filters") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.identifier_filters" id="idTag__kermits__filtercollection.identifiers" onchange="addOnceTouchedParam('kermits__filter.identifier_filters__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);for(var i=0; i<this.options.length; i++) {    removeFromSummaryPanelList('kermits__filterlist', 'kermits__filter.'+this.options[i].value); };checkFilterCollectionCheckbox('kermits__filtercollection.identifiers');" >
+
+
+	
+	<option value="marker_symbol"
+
+>Marker Symbol</option>
+
+	
+	<option value="ensembl_gene_id"
+
+>Ensembl Gene ID</option>
+
+	
+	<option value="vega_gene_id"
+
+>Vega Gene ID</option>
+</select>
+		<br /><textarea name="kermits__filter.identifier_filters__text" cols="25" rows="4" onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('kermits__filtercollection.identifiers');};">
+[* session.param("kermits__filter.identifier_filters__text") || '' *]
+</textarea>
+<br /><input type="file" name="kermits__filter.identifier_filters__text__file" value="" size="16" onchange="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('kermits__filtercollection.identifiers');};" />
+<input type="hidden" name="upload_file_params" value="kermits__filter.identifier_filters__text__file" />
+
+
+
+			</div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.escell_clone", "ES Cell Clone", "", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.escell_clone_name">
+		
+<div class="mart_filter" id="kermits__filter.escell_clone_name__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.escell_clone_name" value="on" 
+[* IF session.param("${param_prefix}filtercollection.escell_clone_name") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.escell_clone_name'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.escell_clone_name'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.escell_clone_name'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.escell_clone_name'); 
+	}" />
+  ES Cell Clone Name
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.escell_clone_name">
+<textarea name="kermits__filter.escell_clone_name" cols="25" rows="4" onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('kermits__filtercollection.escell_clone_name');};">
+[* session.param("kermits__filter.escell_clone_name") || '' *]
+</textarea>
+<br /><input type="file" name="kermits__filter.escell_clone_name__file" value="" size="16" onchange="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('kermits__filtercollection.escell_clone_name');};" />
+<input type="hidden" name="upload_file_params" value="kermits__filter.escell_clone_name__file" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.escell_line">
+		
+<div class="mart_filter" id="kermits__filter.escell_line__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.escell_line" value="on" 
+[* IF session.param("${param_prefix}filtercollection.escell_line") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.escell_line'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.escell_line'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.escell_line'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.escell_line'); 
+	}" />
+  ES Cell Line
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.escell_line">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.escell_line" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.escell_line") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.escell_line").defined() 
+           && ( session.param("kermits__filter.escell_line") != '' ) )
+      || ( session.param("kermits__filter.escell_line").size() 
+           && ( session.param("kermits__filter.escell_line").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.escell_line") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.escell_line" id="idTag__kermits__filtercollection.escell_line"	
+ multiple = "multiple"  size="13.2"  onchange="addOnceTouchedParam('kermits__filter.escell_line__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.escell_line');" >
+
+
+	
+	<option value="AB2.2"
+
+>AB2.2</option>
+
+	
+	<option value="C2 (p13)"
+
+>C2 (p13)</option>
+
+	
+	<option value="JM8"
+
+>JM8</option>
+
+	
+	<option value="JM8 (p13)"
+
+>JM8 (p13)</option>
+
+	
+	<option value="JM8 (p15)"
+
+>JM8 (p15)</option>
+
+	
+	<option value="JM8 (p18)"
+
+>JM8 (p18)</option>
+
+	
+	<option value="JM8 parental"
+
+>JM8 parental</option>
+
+	
+	<option value="JM8 parental (p15)"
+
+>JM8 parental (p15)</option>
+
+	
+	<option value="JM8 parental (p17)"
+
+>JM8 parental (p17)</option>
+
+	
+	<option value="JM8. N4 (P9)"
+
+>JM8. N4 (P9)</option>
+
+	
+	<option value="JM8.F6 "
+
+>JM8.F6 </option>
+
+	
+	<option value="JM8.F6 (P10)"
+
+>JM8.F6 (P10)</option>
+
+	
+	<option value="JM8.F6 (p10)"
+
+>JM8.F6 (p10)</option>
+
+	
+	<option value="JM8.F6 (p11)"
+
+>JM8.F6 (p11)</option>
+
+	
+	<option value="JM8.F6 (p12)"
+
+>JM8.F6 (p12)</option>
+
+	
+	<option value="JM8.F6 (p13)"
+
+>JM8.F6 (p13)</option>
+
+	
+	<option value="JM8.F6 (p17)"
+
+>JM8.F6 (p17)</option>
+
+	
+	<option value="JM8.F6 (p9)"
+
+>JM8.F6 (p9)</option>
+
+	
+	<option value="JM8.F6 P12"
+
+>JM8.F6 P12</option>
+
+	
+	<option value="JM8.N19 (p6)"
+
+>JM8.N19 (p6)</option>
+
+	
+	<option value="JM8.N4"
+
+>JM8.N4</option>
+
+	
+	<option value="JM8.N4  (P11)"
+
+>JM8.N4  (P11)</option>
+
+	
+	<option value="JM8.N4 (P10)"
+
+>JM8.N4 (P10)</option>
+
+	
+	<option value="JM8.N4 (P11)"
+
+>JM8.N4 (P11)</option>
+
+	
+	<option value="JM8.N4 (P12)"
+
+>JM8.N4 (P12)</option>
+
+	
+	<option value="JM8.N4 (P12/18)"
+
+>JM8.N4 (P12/18)</option>
+
+	
+	<option value="JM8.N4 (P13)"
+
+>JM8.N4 (P13)</option>
+
+	
+	<option value="JM8.N4 (P15)"
+
+>JM8.N4 (P15)</option>
+
+	
+	<option value="JM8.N4 (P16)"
+
+>JM8.N4 (P16)</option>
+
+	
+	<option value="JM8.N4 (P9)"
+
+>JM8.N4 (P9)</option>
+
+	
+	<option value="JM8.N4 (P9/15)"
+
+>JM8.N4 (P9/15)</option>
+
+	
+	<option value="JM8.N4 (p10)"
+
+>JM8.N4 (p10)</option>
+
+	
+	<option value="JM8.N4 (p11)"
+
+>JM8.N4 (p11)</option>
+
+	
+	<option value="JM8.N4 (p12)"
+
+>JM8.N4 (p12)</option>
+
+	
+	<option value="JM8.N4 (p13)"
+
+>JM8.N4 (p13)</option>
+
+	
+	<option value="JM8.N4 (p14)"
+
+>JM8.N4 (p14)</option>
+
+	
+	<option value="JM8.N4 (p15)"
+
+>JM8.N4 (p15)</option>
+
+	
+	<option value="JM8.N4 (p8)"
+
+>JM8.N4 (p8)</option>
+
+	
+	<option value="JM8.N4 (p9)"
+
+>JM8.N4 (p9)</option>
+
+	
+	<option value="JM8.N4 (p9/15)"
+
+>JM8.N4 (p9/15)</option>
+
+	
+	<option value="JM8.N4 P10"
+
+>JM8.N4 P10</option>
+
+	
+	<option value="JM8.N4 P11"
+
+>JM8.N4 P11</option>
+
+	
+	<option value="JM8.N4 P12"
+
+>JM8.N4 P12</option>
+
+	
+	<option value="JM8.N4 P9"
+
+>JM8.N4 P9</option>
+
+	
+	<option value="JM8.N4 p10"
+
+>JM8.N4 p10</option>
+
+	
+	<option value="JM8.N4 p11"
+
+>JM8.N4 p11</option>
+
+	
+	<option value="JM8.N4 p12"
+
+>JM8.N4 p12</option>
+
+	
+	<option value="JM8.N4 p12/18"
+
+>JM8.N4 p12/18</option>
+
+	
+	<option value="JM8.N4 p13"
+
+>JM8.N4 p13</option>
+
+	
+	<option value="JM8.N4 p7"
+
+>JM8.N4 p7</option>
+
+	
+	<option value="JM8.N4 p9"
+
+>JM8.N4 p9</option>
+
+	
+	<option value="JM8.N4 p9/15"
+
+>JM8.N4 p9/15</option>
+
+	
+	<option value="JM8.N4(P12)"
+
+>JM8.N4(P12)</option>
+
+	
+	<option value="JM8.N4(p10)"
+
+>JM8.N4(p10)</option>
+
+	
+	<option value="JM8.N4(p12)"
+
+>JM8.N4(p12)</option>
+
+	
+	<option value="JM8.N4(p9)"
+
+>JM8.N4(p9)</option>
+
+	
+	<option value="JM8.N4.P12"
+
+>JM8.N4.P12</option>
+
+	
+	<option value="JM8.N4.p11"
+
+>JM8.N4.p11</option>
+
+	
+	<option value="JM8A.N3 (p10)"
+
+>JM8A.N3 (p10)</option>
+
+	
+	<option value="JM8A.N3 p12"
+
+>JM8A.N3 p12</option>
+
+	
+	<option value="JM8A1 (Agouti)"
+
+>JM8A1 (Agouti)</option>
+
+	
+	<option value="JM8A1.N3"
+
+>JM8A1.N3</option>
+
+	
+	<option value="JM8A1.N3 (P10)"
+
+>JM8A1.N3 (P10)</option>
+
+	
+	<option value="JM8A1.N3 (p7)"
+
+>JM8A1.N3 (p7)</option>
+
+	
+	<option value="JM8A3 (Agouti) "
+
+>JM8A3 (Agouti) </option>
+
+	
+	<option value="SI6.C21"
+
+>SI6.C21</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.escell_strain">
+		
+<div class="mart_filter" id="kermits__filter.escell_strain__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.escell_strain" value="on" 
+[* IF session.param("${param_prefix}filtercollection.escell_strain") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.escell_strain'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.escell_strain'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.escell_strain'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.escell_strain'); 
+	}" />
+  ES Cell Strain
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.escell_strain">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.escell_strain" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.escell_strain") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.escell_strain").defined() 
+           && ( session.param("kermits__filter.escell_strain") != '' ) )
+      || ( session.param("kermits__filter.escell_strain").size() 
+           && ( session.param("kermits__filter.escell_strain").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.escell_strain") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.escell_strain" id="idTag__kermits__filtercollection.escell_strain"	
+ multiple = "multiple"  size="2"  onchange="addOnceTouchedParam('kermits__filter.escell_strain__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.escell_strain');" >
+
+
+	
+	<option value="129S7"
+
+>129S7</option>
+
+	
+	<option value="C57BL/6N"
+
+>C57BL/6N</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.mi_dist_centre", "Microinjection / Distribution Centre", "", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.mi_centre">
+		
+<div class="mart_filter" id="kermits__filter.mi_centre__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.mi_centre" value="on" 
+[* IF session.param("${param_prefix}filtercollection.mi_centre") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.mi_centre'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.mi_centre'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.mi_centre'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.mi_centre'); 
+	}" />
+  Microinjection Centre
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.mi_centre">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.mi_centre" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.mi_centre") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.mi_centre").defined() 
+           && ( session.param("kermits__filter.mi_centre") != '' ) )
+      || ( session.param("kermits__filter.mi_centre").size() 
+           && ( session.param("kermits__filter.mi_centre").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.mi_centre") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.mi_centre" id="idTag__kermits__filtercollection.mi_centre"	
+ multiple = "multiple"  size="5"  onchange="addOnceTouchedParam('kermits__filter.mi_centre__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.mi_centre');" >
+
+
+	
+	<option value="GSF"
+
+>GSF</option>
+
+	
+	<option value="ICS"
+
+>ICS</option>
+
+	
+	<option value="MRC - Harwell"
+
+>MRC - Harwell</option>
+
+	
+	<option value="Monterotondo"
+
+>Monterotondo</option>
+
+	
+	<option value="UCD"
+
+>UCD</option>
+
+	
+	<option value="WTSI"
+
+>WTSI</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.distribution_centre">
+		
+<div class="mart_filter" id="kermits__filter.distribution_centre__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.distribution_centre" value="on" 
+[* IF session.param("${param_prefix}filtercollection.distribution_centre") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.distribution_centre'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.distribution_centre'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.distribution_centre'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.distribution_centre'); 
+	}" />
+  Distribution Centre
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.distribution_centre">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.distribution_centre" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.distribution_centre") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.distribution_centre").defined() 
+           && ( session.param("kermits__filter.distribution_centre") != '' ) )
+      || ( session.param("kermits__filter.distribution_centre").size() 
+           && ( session.param("kermits__filter.distribution_centre").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.distribution_centre") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.distribution_centre" id="idTag__kermits__filtercollection.distribution_centre"	
+ multiple = "multiple"  size="5"  onchange="addOnceTouchedParam('kermits__filter.distribution_centre__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.distribution_centre');" >
+
+
+	
+	<option value="CNB"
+
+>CNB</option>
+
+	
+	<option value="GSF"
+
+>GSF</option>
+
+	
+	<option value="ICS"
+
+>ICS</option>
+
+	
+	<option value="MRC - Harwell"
+
+>MRC - Harwell</option>
+
+	
+	<option value="Monterotondo"
+
+>Monterotondo</option>
+
+	
+	<option value="UCD"
+
+>UCD</option>
+
+	
+	<option value="WTSI"
+
+>WTSI</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.status", "Microinjection Status", "", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.status">
+		
+<div class="mart_filter" id="kermits__filter.status__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.status" value="on" 
+[* IF session.param("${param_prefix}filtercollection.status") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.status'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.status'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.status'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.status'); 
+	}" />
+  Microinjection Status
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.status">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.status" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.status") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.status").defined() 
+           && ( session.param("kermits__filter.status") != '' ) )
+      || ( session.param("kermits__filter.status").size() 
+           && ( session.param("kermits__filter.status").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.status") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.status" id="idTag__kermits__filtercollection.status"	
+ multiple = "multiple"  size="4"  onchange="addOnceTouchedParam('kermits__filter.status__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.status');" >
+
+
+	
+	<option value="Genotype Confirmed"
+
+>Genotype Confirmed</option>
+
+	
+	<option value="Germline Transmission"
+
+>Germline Transmission Confirmed</option>
+
+	
+	<option value="Micro-Injection in Progress"
+
+>Microinjection in Progress</option>
+
+	
+	<option value="Micro-Injection Attempt Failed"
+
+>Microinjection Attempt Failed</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.status_code">
+		
+<div class="mart_filter" id="kermits__filter.status_code__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.status_code" value="on" 
+[* IF session.param("${param_prefix}filtercollection.status_code") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.status_code'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.status_code'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.status_code'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.status_code'); 
+	}" />
+  Status Code
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.status_code">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.status_code" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.status_code") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.status_code").defined() 
+           && ( session.param("kermits__filter.status_code") != '' ) )
+      || ( session.param("kermits__filter.status_code").size() 
+           && ( session.param("kermits__filter.status_code").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.status_code") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.status_code" id="idTag__kermits__filtercollection.status_code"	
+ multiple = "multiple"  size="4"  onchange="addOnceTouchedParam('kermits__filter.status_code__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.status_code');" >
+
+
+	
+	<option value="GC"
+
+>GC</option>
+
+	
+	<option value="GLT"
+
+>GLT</option>
+
+	
+	<option value="MIP"
+
+>MIP</option>
+
+	
+	<option value="MIF"
+
+>MIF</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.back_cross_strain", "Back Cross Strain", "", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.back_cross_strain">
+		
+<div class="mart_filter" id="kermits__filter.back_cross_strain__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.back_cross_strain" value="on" 
+[* IF session.param("${param_prefix}filtercollection.back_cross_strain") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.back_cross_strain'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.back_cross_strain'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.back_cross_strain'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.back_cross_strain'); 
+	}" />
+  Back Cross Strain
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.back_cross_strain">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.back_cross_strain" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.back_cross_strain") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.back_cross_strain").defined() 
+           && ( session.param("kermits__filter.back_cross_strain") != '' ) )
+      || ( session.param("kermits__filter.back_cross_strain").size() 
+           && ( session.param("kermits__filter.back_cross_strain").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.back_cross_strain") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.back_cross_strain" id="idTag__kermits__filtercollection.back_cross_strain"	
+ multiple = "multiple"  size="5"  onchange="addOnceTouchedParam('kermits__filter.back_cross_strain__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.back_cross_strain');" >
+
+
+	
+	<option value="BALB/c"
+
+>BALB/c</option>
+
+	
+	<option value="C3HeB/FeJ"
+
+>C3HeB/FeJ</option>
+
+	
+	<option value="C57BL/6"
+
+>C57BL/6</option>
+
+	
+	<option value="C57BL/6-Tyr<c-Brd>"
+
+>C57BL/6-Tyr<c-Brd></option>
+
+	
+	<option value="C57BL/6-Tyr<c-Brd>,C57BL/6-Tyr<c-Brd>"
+
+>C57BL/6-Tyr<c-Brd>,C57BL/6-Tyr<c-Brd></option>
+
+	
+	<option value="C57BL/6-Tyr<c-Brd>,C57BL/6J/Wtsi"
+
+>C57BL/6-Tyr<c-Brd>,C57BL/6J/Wtsi</option>
+
+	
+	<option value="C57BL/6NTac/Den"
+
+>C57BL/6NTac/Den</option>
+
+	
+	<option value="C57BL6/J"
+
+>C57BL6/J</option>
+
+	
+	<option value="Unknown"
+
+>Unknown</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.test_cross_strain", "Test Cross Strain", "", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.test_cross_strain">
+		
+<div class="mart_filter" id="kermits__filter.test_cross_strain__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.test_cross_strain" value="on" 
+[* IF session.param("${param_prefix}filtercollection.test_cross_strain") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.test_cross_strain'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.test_cross_strain'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.test_cross_strain'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.test_cross_strain'); 
+	}" />
+  Test Cross Strain
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.test_cross_strain">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.test_cross_strain" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.test_cross_strain") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.test_cross_strain").defined() 
+           && ( session.param("kermits__filter.test_cross_strain") != '' ) )
+      || ( session.param("kermits__filter.test_cross_strain").size() 
+           && ( session.param("kermits__filter.test_cross_strain").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.test_cross_strain") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.test_cross_strain" id="idTag__kermits__filtercollection.test_cross_strain"	
+ multiple = "multiple"  size="5"  onchange="addOnceTouchedParam('kermits__filter.test_cross_strain__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.test_cross_strain');" >
+
+
+	
+	<option value="129S4/SvJae"
+
+>129S4/SvJae</option>
+
+	
+	<option value="129S5"
+
+>129S5</option>
+
+	
+	<option value="C57BL/10ScSn"
+
+>C57BL/10ScSn</option>
+
+	
+	<option value="C57BL/6-Tyr<c-Brd>"
+
+>C57BL/6-Tyr<c-Brd></option>
+
+	
+	<option value="C57BL/6J"
+
+>C57BL/6J</option>
+
+	
+	<option value="C57BL/6J-Tyr<cBrd>"
+
+>C57BL/6J-Tyr<cBrd></option>
+
+	
+	<option value="C57BL/6J/Wtsi"
+
+>C57BL/6J/Wtsi</option>
+
+	
+	<option value="C57BL/6N Tac"
+
+>C57BL/6N Tac</option>
+
+	
+	<option value="C57BL/6NTac,Delete o"
+
+>C57BL/6NTac,Delete o</option>
+
+	
+	<option value="C57BL/6NTac/Den"
+
+>C57BL/6NTac/Den</option>
+
+	
+	<option value="C57BL/6NTac/Den,Dele"
+
+>C57BL/6NTac/Den,Dele</option>
+
+	
+	<option value="C57BL6c-c-"
+
+>C57BL6c-c-</option>
+
+	
+	<option value="CBA"
+
+>CBA</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.emma", "Emma", "", "" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.emma">
+		
+<div class="mart_filter" id="kermits__filter.emma__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.emma" value="on" 
+[* IF session.param("${param_prefix}filtercollection.emma") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.emma'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.emma'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.emma'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.emma'); 
+	}" />
+  Available from EMMA?
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="kermits__filter.emma">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "kermits__filter.emma" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("kermits__filter.emma") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("kermits__filter.emma").defined() 
+           && ( session.param("kermits__filter.emma") != '' ) )
+      || ( session.param("kermits__filter.emma").size() 
+           && ( session.param("kermits__filter.emma").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("kermits__filter.emma") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="kermits__filter.emma" id="idTag__kermits__filtercollection.emma" onchange="addOnceTouchedParam('kermits__filter.emma__onceTouched');updateMenuPushactions(this, kermits__pushActionsOfFiltermenu, kermits__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('kermits__filtercollection.emma');" >
+
+
+	
+	<option value="1"
+
+>yes</option>
+
+	
+	<option value="0"
+
+>no</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+      <script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// All pushaction-info collected from filter-configs, as one big hash
+var ${param_prefix}pushActionsOfFiltermenu = {};
+
+// Set up list of selected options for pushaction-menus as stored in session. Needed to
+// set the selected option for those menus in the pa-updating function.
+var ${param_prefix}sessionValueOfFiltermenu = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+
+// Initial update of all pushaction-menus on page load
+  //  foreach menu in big pushaction-info hash
+for(var pa_menuname in ${param_prefix}pushActionsOfFiltermenu) {
+   var pa_menu = document.mainform.elements[pa_menuname];
+   
+   if(pa_menu) {
+	 //  alert("getting pa-info for menu " + pa_menuname + ", obj " + pa_menu);
+      updateMenuPushactions(pa_menu, ${param_prefix}pushActionsOfFiltermenu, ${param_prefix}sessionValueOfFiltermenu);
+   }
+}
+
+
+[* filts_to_check = session.param("${param_prefix}filtercollections") *]
+[* IF !filts_to_check || filts_to_check == ' ' *]
+	[* filts_to_check = []  *]
+[* END *]
+[* tmp_array = [] *]
+[* FOREACH filt = filts_to_check *]
+	[* NEXT IF filt == " " *]
+		[* tmp_array.push("'$filt' : ''") *]
+[* END *]
+
+//]]>
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+	// setting the options of selectMenus to checked 
+	var ${param_prefix}sessionValueOfFiltermenu_1 = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		updateSelectMenu(filterCollectionEltName, ${param_prefix}sessionValueOfFiltermenu_1);
+	}	
+
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+// Update summary-tree on side panel according to info stored in the session, defer works for internet explorer OPERATION ABORTED ERROR
+
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		//alert('Updating filters in fcollection '+filterCollectionEltName);
+   		//enableFiltersInCollection(filterCollectionEltName);
+		//This enableFiltersUpdateSummaryPanel function is not defined anywhere? [why ? It is there in javascript....]
+		enableFiltersUpdateSummaryPanel(filterCollectionEltName);
+	}
+	
+</script>
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+

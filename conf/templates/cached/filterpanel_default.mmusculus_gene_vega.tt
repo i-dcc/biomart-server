@@ -1,0 +1,2248 @@
+[% TAGS star %]
+
+
+
+
+[* param_prefix = param_prefix || '' # just so we don't get undef-errors if no prefix is specified *]
+[* js_session_value_of_filtermenu = {} *]
+
+<div id="mmusculus_gene_vega__filterpanel" style="display: none; width:100%; height:100%; overflow:auto; position: relative;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please restrict your query using criteria below</b></div>
+
+<div class="mart_filterpanel">
+		
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.region", "REGION:", "hide", "Filter for Genes in Specified Regions of the Golden Path" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.chromosome">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.chromosome_name__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.chromosome" value="on" 
+[* IF session.param("${param_prefix}filtercollection.chromosome") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.chromosome'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.chromosome'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.chromosome'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.chromosome'); 
+	}" />
+  <a title="Limit to Genes on a specific Chromosome. ">Chromosome</a>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.chromosome_name">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.chromosome_name" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.chromosome_name") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.chromosome_name").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.chromosome_name") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.chromosome_name").size() 
+           && ( session.param("mmusculus_gene_vega__filter.chromosome_name").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.chromosome_name") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.chromosome_name" id="idTag__mmusculus_gene_vega__filtercollection.chromosome" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.chromosome_name__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.chromosome');" >
+
+
+	
+	<option value="1"
+
+>1</option>
+
+	
+	<option value="2"
+
+>2</option>
+
+	
+	<option value="3"
+
+>3</option>
+
+	
+	<option value="4"
+
+>4</option>
+
+	
+	<option value="5"
+
+>5</option>
+
+	
+	<option value="6"
+
+>6</option>
+
+	
+	<option value="7"
+
+>7</option>
+
+	
+	<option value="8"
+
+>8</option>
+
+	
+	<option value="9"
+
+>9</option>
+
+	
+	<option value="10"
+
+>10</option>
+
+	
+	<option value="11"
+
+>11</option>
+
+	
+	<option value="12"
+
+>12</option>
+
+	
+	<option value="13"
+
+>13</option>
+
+	
+	<option value="14"
+
+>14</option>
+
+	
+	<option value="15"
+
+>15</option>
+
+	
+	<option value="16"
+
+>16</option>
+
+	
+	<option value="17"
+
+>17</option>
+
+	
+	<option value="18"
+
+>18</option>
+
+	
+	<option value="19"
+
+>19</option>
+
+	
+	<option value="X"
+
+>X</option>
+
+	
+	<option value="Y"
+
+>Y</option>
+
+	
+	<option value="MT"
+
+>MT</option>
+
+	
+	<option value="NT_053651"
+
+>NT_053651</option>
+
+	
+	<option value="NT_072868"
+
+>NT_072868</option>
+
+	
+	<option value="NT_109319"
+
+>NT_109319</option>
+
+	
+	<option value="NT_110857"
+
+>NT_110857</option>
+
+	
+	<option value="NT_112000"
+
+>NT_112000</option>
+
+	
+	<option value="NT_161866"
+
+>NT_161866</option>
+
+	
+	<option value="NT_161868"
+
+>NT_161868</option>
+
+	
+	<option value="NT_161872"
+
+>NT_161872</option>
+
+	
+	<option value="NT_161875"
+
+>NT_161875</option>
+
+	
+	<option value="NT_161877"
+
+>NT_161877</option>
+
+	
+	<option value="NT_161879"
+
+>NT_161879</option>
+
+	
+	<option value="NT_161885"
+
+>NT_161885</option>
+
+	
+	<option value="NT_161892"
+
+>NT_161892</option>
+
+	
+	<option value="NT_161895"
+
+>NT_161895</option>
+
+	
+	<option value="NT_161897"
+
+>NT_161897</option>
+
+	
+	<option value="NT_161898"
+
+>NT_161898</option>
+
+	
+	<option value="NT_161902"
+
+>NT_161902</option>
+
+	
+	<option value="NT_161904"
+
+>NT_161904</option>
+
+	
+	<option value="NT_161906"
+
+>NT_161906</option>
+
+	
+	<option value="NT_161911"
+
+>NT_161911</option>
+
+	
+	<option value="NT_161916"
+
+>NT_161916</option>
+
+	
+	<option value="NT_161923"
+
+>NT_161923</option>
+
+	
+	<option value="NT_161924"
+
+>NT_161924</option>
+
+	
+	<option value="NT_161925"
+
+>NT_161925</option>
+
+	
+	<option value="NT_161926"
+
+>NT_161926</option>
+
+	
+	<option value="NT_161928"
+
+>NT_161928</option>
+
+	
+	<option value="NT_161937"
+
+>NT_161937</option>
+
+	
+	<option value="NT_162750"
+
+>NT_162750</option>
+
+	
+	<option value="NT_165754"
+
+>NT_165754</option>
+
+	
+	<option value="NT_165789"
+
+>NT_165789</option>
+
+	
+	<option value="NT_165790"
+
+>NT_165790</option>
+
+	
+	<option value="NT_165791"
+
+>NT_165791</option>
+
+	
+	<option value="NT_165792"
+
+>NT_165792</option>
+
+	
+	<option value="NT_165794"
+
+>NT_165794</option>
+
+	
+	<option value="NT_165795"
+
+>NT_165795</option>
+
+	
+	<option value="NT_165796"
+
+>NT_165796</option>
+
+	
+	<option value="NT_165798"
+
+>NT_165798</option>
+
+	
+	<option value="NT_166280"
+
+>NT_166280</option>
+
+	
+	<option value="NT_166281"
+
+>NT_166281</option>
+
+	
+	<option value="NT_166282"
+
+>NT_166282</option>
+
+	
+	<option value="NT_166286"
+
+>NT_166286</option>
+
+	
+	<option value="NT_166290"
+
+>NT_166290</option>
+
+	
+	<option value="NT_166291"
+
+>NT_166291</option>
+
+	
+	<option value="NT_166303"
+
+>NT_166303</option>
+
+	
+	<option value="NT_166307"
+
+>NT_166307</option>
+
+	
+	<option value="NT_166308"
+
+>NT_166308</option>
+
+	
+	<option value="NT_166309"
+
+>NT_166309</option>
+
+	
+	<option value="NT_166310"
+
+>NT_166310</option>
+
+	
+	<option value="NT_166311"
+
+>NT_166311</option>
+
+	
+	<option value="NT_166313"
+
+>NT_166313</option>
+
+	
+	<option value="NT_166314"
+
+>NT_166314</option>
+
+	
+	<option value="NT_166323"
+
+>NT_166323</option>
+
+	
+	<option value="NT_166326"
+
+>NT_166326</option>
+
+	
+	<option value="NT_166327"
+
+>NT_166327</option>
+
+	
+	<option value="NT_166328"
+
+>NT_166328</option>
+
+	
+	<option value="NT_166333"
+
+>NT_166333</option>
+
+	
+	<option value="NT_166339"
+
+>NT_166339</option>
+
+	
+	<option value="NT_166341"
+
+>NT_166341</option>
+
+	
+	<option value="NT_166342"
+
+>NT_166342</option>
+
+	
+	<option value="NT_166344"
+
+>NT_166344</option>
+
+	
+	<option value="NT_166345"
+
+>NT_166345</option>
+
+	
+	<option value="NT_166346"
+
+>NT_166346</option>
+
+	
+	<option value="NT_166347"
+
+>NT_166347</option>
+
+	
+	<option value="NT_166348"
+
+>NT_166348</option>
+
+	
+	<option value="NT_166349"
+
+>NT_166349</option>
+
+	
+	<option value="NT_166350"
+
+>NT_166350</option>
+
+	
+	<option value="NT_166351"
+
+>NT_166351</option>
+
+	
+	<option value="NT_166352"
+
+>NT_166352</option>
+
+	
+	<option value="NT_166353"
+
+>NT_166353</option>
+
+	
+	<option value="NT_166354"
+
+>NT_166354</option>
+
+	
+	<option value="NT_166358"
+
+>NT_166358</option>
+
+	
+	<option value="NT_166360"
+
+>NT_166360</option>
+
+	
+	<option value="NT_166361"
+
+>NT_166361</option>
+
+	
+	<option value="NT_166363"
+
+>NT_166363</option>
+
+	
+	<option value="NT_166366"
+
+>NT_166366</option>
+
+	
+	<option value="NT_166369"
+
+>NT_166369</option>
+
+	
+	<option value="NT_166370"
+
+>NT_166370</option>
+
+	
+	<option value="NT_166371"
+
+>NT_166371</option>
+
+	
+	<option value="NT_166372"
+
+>NT_166372</option>
+
+	
+	<option value="NT_166376"
+
+>NT_166376</option>
+
+	
+	<option value="NT_166377"
+
+>NT_166377</option>
+
+	
+	<option value="NT_166378"
+
+>NT_166378</option>
+
+	
+	<option value="NT_166380"
+
+>NT_166380</option>
+
+	
+	<option value="NT_166381"
+
+>NT_166381</option>
+
+	
+	<option value="NT_166382"
+
+>NT_166382</option>
+
+	
+	<option value="NT_166385"
+
+>NT_166385</option>
+
+	
+	<option value="NT_166386"
+
+>NT_166386</option>
+
+	
+	<option value="NT_166389"
+
+>NT_166389</option>
+
+	
+	<option value="NT_166390"
+
+>NT_166390</option>
+
+	
+	<option value="NT_166402"
+
+>NT_166402</option>
+
+	
+	<option value="NT_166403"
+
+>NT_166403</option>
+
+	
+	<option value="NT_166404"
+
+>NT_166404</option>
+
+	
+	<option value="NT_166405"
+
+>NT_166405</option>
+
+	
+	<option value="NT_166407"
+
+>NT_166407</option>
+
+	
+	<option value="NT_166409"
+
+>NT_166409</option>
+
+	
+	<option value="NT_166410"
+
+>NT_166410</option>
+
+	
+	<option value="NT_166412"
+
+>NT_166412</option>
+
+	
+	<option value="NT_166413"
+
+>NT_166413</option>
+
+	
+	<option value="NT_166414"
+
+>NT_166414</option>
+
+	
+	<option value="NT_166416"
+
+>NT_166416</option>
+
+	
+	<option value="NT_166417"
+
+>NT_166417</option>
+
+	
+	<option value="NT_166418"
+
+>NT_166418</option>
+
+	
+	<option value="NT_166419"
+
+>NT_166419</option>
+
+	
+	<option value="NT_166420"
+
+>NT_166420</option>
+
+	
+	<option value="NT_166421"
+
+>NT_166421</option>
+
+	
+	<option value="NT_166422"
+
+>NT_166422</option>
+
+	
+	<option value="NT_166424"
+
+>NT_166424</option>
+
+	
+	<option value="NT_166433"
+
+>NT_166433</option>
+
+	
+	<option value="NT_166434"
+
+>NT_166434</option>
+
+	
+	<option value="NT_166435"
+
+>NT_166435</option>
+
+	
+	<option value="NT_166436"
+
+>NT_166436</option>
+
+	
+	<option value="NT_166437"
+
+>NT_166437</option>
+
+	
+	<option value="NT_166438"
+
+>NT_166438</option>
+
+	
+	<option value="NT_166439"
+
+>NT_166439</option>
+
+	
+	<option value="NT_166440"
+
+>NT_166440</option>
+
+	
+	<option value="NT_166441"
+
+>NT_166441</option>
+
+	
+	<option value="NT_166442"
+
+>NT_166442</option>
+
+	
+	<option value="NT_166443"
+
+>NT_166443</option>
+
+	
+	<option value="NT_166445"
+
+>NT_166445</option>
+
+	
+	<option value="NT_166447"
+
+>NT_166447</option>
+
+	
+	<option value="NT_166455"
+
+>NT_166455</option>
+
+	
+	<option value="NT_166456"
+
+>NT_166456</option>
+
+	
+	<option value="NT_166466"
+
+>NT_166466</option>
+
+	
+	<option value="NT_166468"
+
+>NT_166468</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.chromosome_coordinates">
+		  <input type="checkbox" name="${param_prefix}filtercollection.chromosome_coordinates" value="on" 
+[* IF session.param("${param_prefix}filtercollection.chromosome_coordinates") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.chromosome_coordinates'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.chromosome_coordinates'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.chromosome_coordinates'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.chromosome_coordinates'); 
+	}" />
+				  <a title="Limit to Genes within prescribed Chromosomal Coordinates.">Base pair</a>
+<div class="mart_filter" id="mmusculus_gene_vega__filter.start__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="" style="margin-left: 22px">
+  <a title="Determine which base pair on the specified chromosome to begin range">Gene Start (bp)</a>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.start">
+<input type="text" name="mmusculus_gene_vega__filter.start" value="
+[* IF session.param("mmusculus_gene_vega__filter.start").defined() *]
+  [* session.param("mmusculus_gene_vega__filter.start") *]
+[* ELSE *]1[* END *]
+" 
+
+
+		onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.chromosome_coordinates');};" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<div class="mart_filter" id="mmusculus_gene_vega__filter.end__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="" style="margin-left: 22px">
+  <a title="Determine which base pair on the specified chromosome to end range">Gene End (bp)</a>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.end">
+<input type="text" name="mmusculus_gene_vega__filter.end" value="
+[* IF session.param("mmusculus_gene_vega__filter.end").defined() *]
+  [* session.param("mmusculus_gene_vega__filter.end") *]
+[* ELSE *]10000000[* END *]
+" 
+
+
+		onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.chromosome_coordinates');};" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+				<br />			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.band_collection">
+		  <input type="checkbox" name="${param_prefix}filtercollection.band_collection" value="on" 
+[* IF session.param("${param_prefix}filtercollection.band_collection") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.band_collection'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.band_collection'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.band_collection'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.band_collection'); 
+	}" />
+					Band
+<div class="mart_filter" id="mmusculus_gene_vega__filter.band_start__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="" style="margin-left: 22px">
+  Band Start
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.band_start">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.band_start" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.band_start") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.band_start").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.band_start") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.band_start").size() 
+           && ( session.param("mmusculus_gene_vega__filter.band_start").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.band_start") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.band_start" id="idTag__mmusculus_gene_vega__filtercollection.band_collection" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.band_start__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.band_collection');" >
+
+	<option></option></select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<div class="mart_filter" id="mmusculus_gene_vega__filter.band_end__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="" style="margin-left: 22px">
+  Band End
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.band_end">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.band_end" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.band_end") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.band_end").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.band_end") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.band_end").size() 
+           && ( session.param("mmusculus_gene_vega__filter.band_end").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.band_end") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.band_end" id="idTag__mmusculus_gene_vega__filtercollection.band_collection" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.band_end__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.band_collection');" >
+
+	<option></option></select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+				<br />			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.marker_collection">
+		  <input type="checkbox" name="${param_prefix}filtercollection.marker_collection" value="on" 
+[* IF session.param("${param_prefix}filtercollection.marker_collection") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.marker_collection'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.marker_collection'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.marker_collection'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.marker_collection'); 
+	}" />
+					Marker
+<div class="mart_filter" id="mmusculus_gene_vega__filter.marker_start__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="" style="margin-left: 22px">
+  Marker Start
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.marker_start">
+<input type="text" name="mmusculus_gene_vega__filter.marker_start" value="
+[* IF session.param("mmusculus_gene_vega__filter.marker_start").defined() *]
+  [* session.param("mmusculus_gene_vega__filter.marker_start") *]
+[* ELSE *][* END *]
+" 
+
+
+		onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.marker_collection');};" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+<div class="mart_filter" id="mmusculus_gene_vega__filter.marker_end__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="" style="margin-left: 22px">
+  Marker End
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.marker_end">
+<input type="text" name="mmusculus_gene_vega__filter.marker_end" value="
+[* IF session.param("mmusculus_gene_vega__filter.marker_end").defined() *]
+  [* session.param("mmusculus_gene_vega__filter.marker_end") *]
+[* ELSE *][* END *]
+" 
+
+
+		onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.marker_collection');};" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+				<br />			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.chromosome_regions">
+		  <input type="checkbox" name="${param_prefix}filtercollection.chromosome_regions" value="on" 
+[* IF session.param("${param_prefix}filtercollection.chromosome_regions") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.chromosome_regions'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.chromosome_regions'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.chromosome_regions'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.chromosome_regions'); 
+	}" />
+				  <a title="Limit to Genes with multiple comma separate Chromosomal regions (1:100:10000:-1,1:1:100000:2000000:1)">Multiple Chromosomal Regions (Chr:Start:End:Strand)</a>
+<div class="mart_filter" id="mmusculus_gene_vega__filter.chromosomal_region__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="" style="margin-left: 22px">
+  <a title="Limit to Genes within multiple comma separate Chromosomal regions (1:100:10000:-1,1:100000:2000000:1)">Chromosomal Regions</a>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.chromosomal_region">
+<textarea name="mmusculus_gene_vega__filter.chromosomal_region" cols="25" rows="4" onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.chromosome_regions');};">
+[* session.param("mmusculus_gene_vega__filter.chromosomal_region") || '' *]
+</textarea>
+<br /><input type="file" name="mmusculus_gene_vega__filter.chromosomal_region__file" value="" size="16" onchange="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.chromosome_regions');};" />
+<input type="hidden" name="upload_file_params" value="mmusculus_gene_vega__filter.chromosomal_region__file" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+				<br />			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.gene", "GENE:", "", "Filter on Gene Related Accessions and Filters" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.id_list">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.new_id_list_filters__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.id_list" value="on" 
+[* IF session.param("${param_prefix}filtercollection.id_list") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.id_list'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.id_list'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.id_list'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.id_list'); 
+	}" />
+  Limit to genes ...   <br/>
+   <img name="mmusculus_gene_vega__filter.new_id_list_filters__image" src="/martview/images/blank.gif" alt=""/>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.new_id_list_filters">
+		<div style="float: left">
+
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.new_id_list_filters" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.new_id_list_filters") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.new_id_list_filters").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.new_id_list_filters") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.new_id_list_filters").size() 
+           && ( session.param("mmusculus_gene_vega__filter.new_id_list_filters").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.new_id_list_filters") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.new_id_list_filters" id="idTag__mmusculus_gene_vega__filtercollection.id_list" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.new_id_list_filters__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);for(var i=0; i<this.options.length; i++) {    removeFromSummaryPanelList('mmusculus_gene_vega__filterlist', 'mmusculus_gene_vega__filter.'+this.options[i].value); };checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.id_list');" >
+
+
+	
+	<option value="with_vega_gene"
+
+>with VEGA gene ID(s)</option>
+
+	
+	<option value="with_vega_transcript"
+
+>with VEGA transcript ID(s)</option>
+
+	
+	<option value="with_vega_translation"
+
+>with VEGA protein ID(s)</option>
+
+	
+	<option value="with_ccds"
+
+>with CCDS ID(s)</option>
+
+	
+	<option value="with_ens_mm_gene"
+
+>with Ensembl Mouse gene ID(s)</option>
+
+	
+	<option value="with_enst_cds"
+
+>with ENST CDS ID(s)</option>
+
+	
+	<option value="with_enst_ident"
+
+>with ENST Identical ID(s)</option>
+
+	
+	<option value="with_entrezgene"
+
+>with EntrezGene ID(s)</option>
+
+	
+	<option value="with_exon_transcript"
+
+>with Exon transcript ID(s)</option>
+
+	
+	<option value="with_go_id"
+
+>with GO ID(s)</option>
+
+	
+	<option value="with_mgi"
+
+>with MGI ID(s)</option>
+
+	
+	<option value="with_refseq_dna"
+
+>with RefSeq DNA ID(s)</option>
+
+	
+	<option value="with_refseq_peptide"
+
+>with RefSeq protein ID(s)</option>
+
+	
+	<option value="with_uniprotswissprot"
+
+>with UniProt/Swissprot Accession(s)</option>
+</select>
+		</div>
+		<div style="float: left">	
+	
+[* is_first_option = 1 *]<input type="radio" id="mmusculus_gene_vega__filter.new_id_list_filters__list____Only" name="mmusculus_gene_vega__filter.new_id_list_filters__list" value="only" 
+	onclick = "onchange();"
+	onchange="var menu = document.mainform['mmusculus_gene_vega__filter.new_id_list_filters'];for(var i=0; i<menu.options.length; i++) {    removeFromSummaryPanelList('mmusculus_gene_vega__filterlist', 'mmusculus_gene_vega__filter.'+menu.options[i].value);};checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.id_list');" 
+[* IF session.param("mmusculus_gene_vega__filter.new_id_list_filters__list").defined()
+   && session.param("mmusculus_gene_vega__filter.new_id_list_filters__list") == "only" *]
+ checked="checked" 
+[* ELSIF is_first_option && !session.param("mmusculus_gene_vega__filter.new_id_list_filters__list").defined() *]
+ checked="checked" 
+[* is_first_option = 0 *]
+[* END *]
+ />Only<br />
+<input type="radio" id="mmusculus_gene_vega__filter.new_id_list_filters__list____Excluded" name="mmusculus_gene_vega__filter.new_id_list_filters__list" value="excluded" 
+	onclick = "onchange();"
+	onchange="var menu = document.mainform['mmusculus_gene_vega__filter.new_id_list_filters'];for(var i=0; i<menu.options.length; i++) {    removeFromSummaryPanelList('mmusculus_gene_vega__filterlist', 'mmusculus_gene_vega__filter.'+menu.options[i].value);};checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.id_list');" 
+[* IF session.param("mmusculus_gene_vega__filter.new_id_list_filters__list").defined()
+   && session.param("mmusculus_gene_vega__filter.new_id_list_filters__list") == "excluded" *]
+ checked="checked" 
+[* ELSIF is_first_option && !session.param("mmusculus_gene_vega__filter.new_id_list_filters__list").defined() *]
+ checked="checked" 
+[* is_first_option = 0 *]
+[* END *]
+ />Excluded<br />
+			</div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.id_list_limit">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.id_list_limit_filters__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.id_list_limit" value="on" 
+[* IF session.param("${param_prefix}filtercollection.id_list_limit") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.id_list_limit'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.id_list_limit'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.id_list_limit'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.id_list_limit'); 
+	}" />
+  ID list limit   <br/>
+   <img name="mmusculus_gene_vega__filter.id_list_limit_filters__image" src="/martview/images/blank.gif" alt=""/>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.id_list_limit_filters">
+		<div style="float: left">
+
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.id_list_limit_filters" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.id_list_limit_filters") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.id_list_limit_filters").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.id_list_limit_filters") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.id_list_limit_filters").size() 
+           && ( session.param("mmusculus_gene_vega__filter.id_list_limit_filters").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.id_list_limit_filters") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.id_list_limit_filters" id="idTag__mmusculus_gene_vega__filtercollection.id_list_limit" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.id_list_limit_filters__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);for(var i=0; i<this.options.length; i++) {    removeFromSummaryPanelList('mmusculus_gene_vega__filterlist', 'mmusculus_gene_vega__filter.'+this.options[i].value); };checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.id_list_limit');" >
+
+
+	
+	<option value="vega_gene_id"
+
+>VEGA gene ID(s)</option>
+
+	
+	<option value="vega_transcript_id"
+
+>VEGA transcript ID(s)</option>
+
+	
+	<option value="vega_translation_id"
+
+>VEGA protein ID(s)</option>
+
+	
+	<option value="ens_mm_gene"
+
+>Ensembl Mouse gene ID(s)</option>
+
+	
+	<option value="ccds"
+
+>CCDS ID(s)</option>
+
+	
+	<option value="go_id"
+
+>GO ID(s)</option>
+
+	
+	<option value="entrezgene"
+
+>EntrezGene ID(s)</option>
+
+	
+	<option value="enst_cds"
+
+>ENST CDS ID(s)</option>
+
+	
+	<option value="enst_ident"
+
+>ENST Identical ID(s)</option>
+
+	
+	<option value="mgi_id"
+
+>MGI ID(s)</option>
+
+	
+	<option value="refseq_dna"
+
+>RefSeq DNA ID(s)</option>
+
+	
+	<option value="refseq_peptide"
+
+>Refseq protein ID(s)</option>
+
+	
+	<option value="uniprot_swissprot"
+
+>UniProt/Swissprot Accession(s)</option>
+</select>
+		<br /><textarea name="mmusculus_gene_vega__filter.id_list_limit_filters__text" cols="25" rows="4" onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.id_list_limit');};">
+[* session.param("mmusculus_gene_vega__filter.id_list_limit_filters__text") || '' *]
+</textarea>
+<br /><input type="file" name="mmusculus_gene_vega__filter.id_list_limit_filters__text__file" value="" size="16" onchange="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.id_list_limit');};" />
+<input type="hidden" name="upload_file_params" value="mmusculus_gene_vega__filter.id_list_limit_filters__text__file" />
+
+
+
+			</div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.transcript_count_filter">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.transcript_count__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.transcript_count_filter" value="on" 
+[* IF session.param("${param_prefix}filtercollection.transcript_count_filter") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.transcript_count_filter'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.transcript_count_filter'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.transcript_count_filter'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.transcript_count_filter'); 
+	}" />
+  Transcript count >=
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.transcript_count">
+<input type="text" name="mmusculus_gene_vega__filter.transcript_count" value="
+[* IF session.param("mmusculus_gene_vega__filter.transcript_count").defined() *]
+  [* session.param("mmusculus_gene_vega__filter.transcript_count") *]
+[* ELSE *][* END *]
+" 
+
+
+		onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.transcript_count_filter');};" />
+
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.biotype_collection">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.biotype__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.biotype_collection" value="on" 
+[* IF session.param("${param_prefix}filtercollection.biotype_collection") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.biotype_collection'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.biotype_collection'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.biotype_collection'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.biotype_collection'); 
+	}" />
+  Gene type
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.biotype">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.biotype" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.biotype") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.biotype").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.biotype") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.biotype").size() 
+           && ( session.param("mmusculus_gene_vega__filter.biotype").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.biotype") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.biotype" id="idTag__mmusculus_gene_vega__filtercollection.biotype_collection"	
+ multiple = "multiple"  size="5"  onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.biotype__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.biotype_collection');" >
+
+
+	
+	<option value="IG_gene"
+
+>IG_gene</option>
+
+	
+	<option value="IG_pseudogene"
+
+>IG_pseudogene</option>
+
+	
+	<option value="processed_pseudogene"
+
+>processed_pseudogene</option>
+
+	
+	<option value="processed_transcript"
+
+>processed_transcript</option>
+
+	
+	<option value="protein_coding"
+
+>protein_coding</option>
+
+	
+	<option value="pseudogene"
+
+>pseudogene</option>
+
+	
+	<option value="unprocessed_pseudogene"
+
+>unprocessed_pseudogene</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.source_coll">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.source__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.source_coll" value="on" 
+[* IF session.param("${param_prefix}filtercollection.source_coll") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.source_coll'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.source_coll'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.source_coll'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.source_coll'); 
+	}" />
+  Source
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.source">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.source" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.source") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.source").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.source") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.source").size() 
+           && ( session.param("mmusculus_gene_vega__filter.source").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.source") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.source" id="idTag__mmusculus_gene_vega__filtercollection.source_coll" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.source__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.source_coll');" >
+
+
+	
+	<option value="vega"
+
+>vega</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.status_coll">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.status__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.status_coll" value="on" 
+[* IF session.param("${param_prefix}filtercollection.status_coll") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.status_coll'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.status_coll'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.status_coll'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.status_coll'); 
+	}" />
+  Status (gene)
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.status">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.status" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.status") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.status").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.status") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.status").size() 
+           && ( session.param("mmusculus_gene_vega__filter.status").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.status") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.status" id="idTag__mmusculus_gene_vega__filtercollection.status_coll" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.status__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.status_coll');" >
+
+
+	
+	<option value="KNOWN"
+
+>KNOWN</option>
+
+	
+	<option value="NOVEL"
+
+>NOVEL</option>
+
+	
+	<option value="PUTATIVE"
+
+>PUTATIVE</option>
+
+	
+	<option value="UNKNOWN"
+
+>UNKNOWN</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.transcript_status_coll">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.transcript_status__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.transcript_status_coll" value="on" 
+[* IF session.param("${param_prefix}filtercollection.transcript_status_coll") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.transcript_status_coll'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.transcript_status_coll'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.transcript_status_coll'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.transcript_status_coll'); 
+	}" />
+  Status (transcript)
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.transcript_status">
+     	
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.transcript_status" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.transcript_status") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.transcript_status").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.transcript_status") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.transcript_status").size() 
+           && ( session.param("mmusculus_gene_vega__filter.transcript_status").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.transcript_status") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.transcript_status" id="idTag__mmusculus_gene_vega__filtercollection.transcript_status_coll" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.transcript_status__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.transcript_status_coll');" >
+
+
+	
+	<option value="UNKNOWN"
+
+>UNKNOWN</option>
+</select>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+    
+		<div class="mart_filtergroup floatholder">
+		[* render_collapse_controls("${param_prefix}filtergroup.protein", "PROTEIN:", "", "Filter on Protein data" ) *]	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.family_domain_id">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.protein_fam_id_bools__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.family_domain_id" value="on" 
+[* IF session.param("${param_prefix}filtercollection.family_domain_id") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.family_domain_id'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.family_domain_id'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.family_domain_id'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.family_domain_id'); 
+	}" />
+  Limit to genes ...   <br/>
+   <img name="mmusculus_gene_vega__filter.protein_fam_id_bools__image" src="/martview/images/blank.gif" alt=""/>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.protein_fam_id_bools">
+		<div style="float: left">
+
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.protein_fam_id_bools" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.protein_fam_id_bools") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.protein_fam_id_bools").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.protein_fam_id_bools") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.protein_fam_id_bools").size() 
+           && ( session.param("mmusculus_gene_vega__filter.protein_fam_id_bools").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.protein_fam_id_bools") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.protein_fam_id_bools" id="idTag__mmusculus_gene_vega__filtercollection.family_domain_id" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.protein_fam_id_bools__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);for(var i=0; i<this.options.length; i++) {    removeFromSummaryPanelList('mmusculus_gene_vega__filterlist', 'mmusculus_gene_vega__filter.'+this.options[i].value); };checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.family_domain_id');" >
+
+
+	
+	<option value="with_prosite"
+
+>with Protein feature scan Prosite ID(s)</option>
+
+	
+	<option value="with_profile"
+
+>with Protein feature pfscan ID(s)</option>
+
+	
+	<option value="with_tmhmm"
+
+>with Protein feature tmhmm ID(s)</option>
+
+	
+	<option value="with_signalp"
+
+>with Protein feature signalp ID(s)</option>
+
+	
+	<option value="with_low_complexity"
+
+>with Protein feature seg ID(s)</option>
+
+	
+	<option value="with_coil"
+
+>with Protein feature ncoils ID(s)</option>
+
+	
+	<option value="with_pfam"
+
+>with PFAM ID(s)</option>
+
+	
+	<option value="with_prints"
+
+>with PRINTS ID(s)</option>
+
+	
+	<option value="with_interpro"
+
+>with InterPro ID(s)</option>
+</select>
+		</div>
+		<div style="float: left">	
+	
+[* is_first_option = 1 *]<input type="radio" id="mmusculus_gene_vega__filter.protein_fam_id_bools__list____Only" name="mmusculus_gene_vega__filter.protein_fam_id_bools__list" value="only" 
+	onclick = "onchange();"
+	onchange="var menu = document.mainform['mmusculus_gene_vega__filter.protein_fam_id_bools'];for(var i=0; i<menu.options.length; i++) {    removeFromSummaryPanelList('mmusculus_gene_vega__filterlist', 'mmusculus_gene_vega__filter.'+menu.options[i].value);};checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.family_domain_id');" 
+[* IF session.param("mmusculus_gene_vega__filter.protein_fam_id_bools__list").defined()
+   && session.param("mmusculus_gene_vega__filter.protein_fam_id_bools__list") == "only" *]
+ checked="checked" 
+[* ELSIF is_first_option && !session.param("mmusculus_gene_vega__filter.protein_fam_id_bools__list").defined() *]
+ checked="checked" 
+[* is_first_option = 0 *]
+[* END *]
+ />Only<br />
+<input type="radio" id="mmusculus_gene_vega__filter.protein_fam_id_bools__list____Excluded" name="mmusculus_gene_vega__filter.protein_fam_id_bools__list" value="excluded" 
+	onclick = "onchange();"
+	onchange="var menu = document.mainform['mmusculus_gene_vega__filter.protein_fam_id_bools'];for(var i=0; i<menu.options.length; i++) {    removeFromSummaryPanelList('mmusculus_gene_vega__filterlist', 'mmusculus_gene_vega__filter.'+menu.options[i].value);};checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.family_domain_id');" 
+[* IF session.param("mmusculus_gene_vega__filter.protein_fam_id_bools__list").defined()
+   && session.param("mmusculus_gene_vega__filter.protein_fam_id_bools__list") == "excluded" *]
+ checked="checked" 
+[* ELSIF is_first_option && !session.param("mmusculus_gene_vega__filter.protein_fam_id_bools__list").defined() *]
+ checked="checked" 
+[* is_first_option = 0 *]
+[* END *]
+ />Excluded<br />
+			</div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.family_domain_id_list">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.protein_fam_id_filters__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.family_domain_id_list" value="on" 
+[* IF session.param("${param_prefix}filtercollection.family_domain_id_list") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.family_domain_id_list'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.family_domain_id_list'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.family_domain_id_list'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.family_domain_id_list'); 
+	}" />
+  <a title="Limit to genes with these family or domain IDs:">Limit to genes with these family or domain IDs:</a>   <br/>
+   <img name="mmusculus_gene_vega__filter.protein_fam_id_filters__image" src="/martview/images/blank.gif" alt=""/>
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.protein_fam_id_filters">
+		<div style="float: left">
+
+[* # At runtime, add entry to hash that keeps track of session values of pushaction-menus *]
+[* filter_parname = "mmusculus_gene_vega__filter.protein_fam_id_filters" *]
+[* js_session_value_of_filtermenu.$filter_parname
+      = session.param("mmusculus_gene_vega__filter.protein_fam_id_filters") || "" *]
+[* filtervalues_lookup = {} *]
+[* IF    ( session.param("mmusculus_gene_vega__filter.protein_fam_id_filters").defined() 
+           && ( session.param("mmusculus_gene_vega__filter.protein_fam_id_filters") != '' ) )
+      || ( session.param("mmusculus_gene_vega__filter.protein_fam_id_filters").size() 
+           && ( session.param("mmusculus_gene_vega__filter.protein_fam_id_filters").size > 0 ) ) *]
+    
+  [* FOREACH filtervalue = session.param("mmusculus_gene_vega__filter.protein_fam_id_filters") *]
+    [*  filtervalues_lookup.$filtervalue = 1 *]   
+  [* END *]
+  
+[* END *]
+
+
+<select name="mmusculus_gene_vega__filter.protein_fam_id_filters" id="idTag__mmusculus_gene_vega__filtercollection.family_domain_id_list" onchange="addOnceTouchedParam('mmusculus_gene_vega__filter.protein_fam_id_filters__onceTouched');updateMenuPushactions(this, mmusculus_gene_vega__pushActionsOfFiltermenu, mmusculus_gene_vega__sessionValueOfFiltermenu);for(var i=0; i<this.options.length; i++) {    removeFromSummaryPanelList('mmusculus_gene_vega__filterlist', 'mmusculus_gene_vega__filter.'+this.options[i].value); };checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.family_domain_id_list');" >
+
+
+	
+	<option value="pfam"
+
+>PFAM ID(s)</option>
+
+	
+	<option value="prints"
+
+>PRINTS ID(s)</option>
+
+	
+	<option value="profile"
+
+>PROFILE ID(s)</option>
+
+	
+	<option value="prosite"
+
+>PROSITE ID(s)</option>
+
+	
+	<option value="interpro"
+
+>InterPro ID(s)</option>
+</select>
+		<br /><textarea name="mmusculus_gene_vega__filter.protein_fam_id_filters__text" cols="25" rows="4" onblur="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.family_domain_id_list');};">
+[* session.param("mmusculus_gene_vega__filter.protein_fam_id_filters__text") || '' *]
+</textarea>
+<br /><input type="file" name="mmusculus_gene_vega__filter.protein_fam_id_filters__text__file" value="" size="16" onchange="if(filterEltHasValue(this)) {    checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.family_domain_id_list');};" />
+<input type="hidden" name="upload_file_params" value="mmusculus_gene_vega__filter.protein_fam_id_filters__text__file" />
+
+
+
+			</div>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.transmembrane">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.with_transmembrane_domain__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.transmembrane" value="on" 
+[* IF session.param("${param_prefix}filtercollection.transmembrane") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.transmembrane'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.transmembrane'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.transmembrane'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.transmembrane'); 
+	}" />
+  Transmembrane domains
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.with_transmembrane_domain">
+     	
+[* is_first_option = 1 *]<input type="radio" id="mmusculus_gene_vega__filter.with_transmembrane_domain____Only" name="mmusculus_gene_vega__filter.with_transmembrane_domain" value="only" 
+	onclick = "onchange();"
+	onchange="checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.transmembrane');" 
+[* IF session.param("mmusculus_gene_vega__filter.with_transmembrane_domain").defined()
+   && session.param("mmusculus_gene_vega__filter.with_transmembrane_domain") == "only" *]
+ checked="checked" 
+[* ELSIF is_first_option && !session.param("mmusculus_gene_vega__filter.with_transmembrane_domain").defined() *]
+ checked="checked" 
+[* is_first_option = 0 *]
+[* END *]
+ />Only<br />
+<input type="radio" id="mmusculus_gene_vega__filter.with_transmembrane_domain____Excluded" name="mmusculus_gene_vega__filter.with_transmembrane_domain" value="excluded" 
+	onclick = "onchange();"
+	onchange="checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.transmembrane');" 
+[* IF session.param("mmusculus_gene_vega__filter.with_transmembrane_domain").defined()
+   && session.param("mmusculus_gene_vega__filter.with_transmembrane_domain") == "excluded" *]
+ checked="checked" 
+[* ELSIF is_first_option && !session.param("mmusculus_gene_vega__filter.with_transmembrane_domain").defined() *]
+ checked="checked" 
+[* is_first_option = 0 *]
+[* END *]
+ />Excluded<br />
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>	
+			<div class="mart_filtercollection" id="[* param_prefix *]filtercollection.signaldomain">
+		
+<div class="mart_filter" id="mmusculus_gene_vega__filter.with_signal_domain__container">
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="45%" valign="top">
+<div class="mart_filtername" onmouseover="">  <input type="checkbox" name="${param_prefix}filtercollection.signaldomain" value="on" 
+[* IF session.param("${param_prefix}filtercollection.signaldomain") == 'on' *]
+checked="checked"
+[* END *]
+ 	onclick = "onchange();"
+ 	onchange=" if(this.checked)
+ 	{
+ 		document.mainform.elements['${param_prefix}filtercollection.signaldomain'].value = 'on';
+		enableFiltersInCollection('${param_prefix}filtercollection.signaldomain'); 
+	} 
+	else 
+	{ 
+		document.mainform.elements['${param_prefix}filtercollection.signaldomain'].value = 'off'; 
+		disableFiltersInCollection('${param_prefix}filtercollection.signaldomain'); 
+	}" />
+  Signal domains
+</div>
+
+</td>
+<td align="left" width="45%" valign="top">
+
+<div class="mart_filtervalue" id ="mmusculus_gene_vega__filter.with_signal_domain">
+     	
+[* is_first_option = 1 *]<input type="radio" id="mmusculus_gene_vega__filter.with_signal_domain____Only" name="mmusculus_gene_vega__filter.with_signal_domain" value="only" 
+	onclick = "onchange();"
+	onchange="checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.signaldomain');" 
+[* IF session.param("mmusculus_gene_vega__filter.with_signal_domain").defined()
+   && session.param("mmusculus_gene_vega__filter.with_signal_domain") == "only" *]
+ checked="checked" 
+[* ELSIF is_first_option && !session.param("mmusculus_gene_vega__filter.with_signal_domain").defined() *]
+ checked="checked" 
+[* is_first_option = 0 *]
+[* END *]
+ />Only<br />
+<input type="radio" id="mmusculus_gene_vega__filter.with_signal_domain____Excluded" name="mmusculus_gene_vega__filter.with_signal_domain" value="excluded" 
+	onclick = "onchange();"
+	onchange="checkFilterCollectionCheckbox('mmusculus_gene_vega__filtercollection.signaldomain');" 
+[* IF session.param("mmusculus_gene_vega__filter.with_signal_domain").defined()
+   && session.param("mmusculus_gene_vega__filter.with_signal_domain") == "excluded" *]
+ checked="checked" 
+[* ELSIF is_first_option && !session.param("mmusculus_gene_vega__filter.with_signal_domain").defined() *]
+ checked="checked" 
+[* is_first_option = 0 *]
+[* END *]
+ />Excluded<br />
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+			</div>
+
+			<!-- this is just a dummy div to prevent the contents of last filter collection from falling out of div - only happens in IE 6 -->
+			<div class="collectionBREAK"></div>
+		</div>
+		</div>
+      <script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// All pushaction-info collected from filter-configs, as one big hash
+var ${param_prefix}pushActionsOfFiltermenu = {'mmusculus_gene_vega__filter.chromosome_name':{'11':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3.1','A3.1'],['A3.2','A3.2'],['A3.3','A3.3'],['A4','A4'],['A5','A5'],['B1.1','B1.1'],['B1.2','B1.2'],['B1.3','B1.3'],['B2','B2'],['B3','B3'],['B4','B4'],['B5','B5'],['C','C'],['D','D'],['E1','E1'],['E2','E2']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3.1','A3.1'],['A3.2','A3.2'],['A3.3','A3.3'],['A4','A4'],['A5','A5'],['B1.1','B1.1'],['B1.2','B1.2'],['B1.3','B1.3'],['B2','B2'],['B3','B3'],['B4','B4'],['B5','B5'],['C','C'],['D','D'],['E1','E1'],['E2','E2']]},'7':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['B4','B4'],['B5','B5'],['C','C'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3'],['F4','F4'],['F5','F5']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['B4','B4'],['B5','B5'],['C','C'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3'],['F4','F4'],['F5','F5']]},'17':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3.1','A3.1'],['A3.2','A3.2'],['A3.3','A3.3'],['B1','B1'],['B2','B2'],['B3','B3'],['C','C'],['D','D'],['E1.1','E1.1'],['E1.2','E1.2'],['E1.3','E1.3'],['E2','E2'],['E3','E3'],['E4','E4'],['E5','E5']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3.1','A3.1'],['A3.2','A3.2'],['A3.3','A3.3'],['B1','B1'],['B2','B2'],['B3','B3'],['C','C'],['D','D'],['E1.1','E1.1'],['E1.2','E1.2'],['E1.3','E1.3'],['E2','E2'],['E3','E3'],['E4','E4'],['E5','E5']]},'2':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['E4','E4'],['E5','E5'],['F1','F1'],['F2','F2'],['F3','F3'],['G1','G1'],['G2','G2'],['G3','G3'],['H1','H1'],['H2','H2'],['H3','H3'],['H4','H4']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['E4','E4'],['E5','E5'],['F1','F1'],['F2','F2'],['F3','F3'],['G1','G1'],['G2','G2'],['G3','G3'],['H1','H1'],['H2','H2'],['H3','H3'],['H4','H4']]},'1':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['A4','A4'],['A5','A5'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['C4','C4'],['C5','C5'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['E4','E4'],['F','F'],['G1','G1'],['G2','G2'],['G3','G3'],['H1','H1'],['H2','H2'],['H3','H3'],['H4','H4'],['H5','H5'],['H6','H6']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['A4','A4'],['A5','A5'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['C4','C4'],['C5','C5'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['E4','E4'],['F','F'],['G1','G1'],['G2','G2'],['G3','G3'],['H1','H1'],['H2','H2'],['H3','H3'],['H4','H4'],['H5','H5'],['H6','H6']]},'18':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['B1','B1'],['B2','B2'],['B3','B3'],['C','C'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2'],['E3','E3'],['E4','E4']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['B1','B1'],['B2','B2'],['B3','B3'],['C','C'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2'],['E3','E3'],['E4','E4']]},'16':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['B4','B4'],['B5','B5'],['C1.1','C1.1'],['C1.2','C1.2'],['C1.3','C1.3'],['C2','C2'],['C3.1','C3.1'],['C3.2','C3.2'],['C3.3','C3.3'],['C4','C4']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['B4','B4'],['B5','B5'],['C1.1','C1.1'],['C1.2','C1.2'],['C1.3','C1.3'],['C2','C2'],['C3.1','C3.1'],['C3.2','C3.2'],['C3.3','C3.3'],['C4','C4']]},'13':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3.1','A3.1'],['A3.2','A3.2'],['A3.3','A3.3'],['A4','A4'],['A5','A5'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2.1','D2.1'],['D2.2','D2.2'],['D2.3','D2.3']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3.1','A3.1'],['A3.2','A3.2'],['A3.3','A3.3'],['A4','A4'],['A5','A5'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2.1','D2.1'],['D2.2','D2.2'],['D2.3','D2.3']]},'6':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3'],['G1','G1'],['G2','G2'],['G3','G3']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3'],['G1','G1'],['G2','G2'],['G3','G3']]},'X':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1.1','A1.1'],['A1.2','A1.2'],['A1.3','A1.3'],['A2','A2'],['A3.1','A3.1'],['A3.2','A3.2'],['A3.3','A3.3'],['A4','A4'],['A5','A5'],['A6','A6'],['A7.1','A7.1'],['A7.2','A7.2'],['A7.3','A7.3'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3'],['F4','F4'],['F5','F5']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1.1','A1.1'],['A1.2','A1.2'],['A1.3','A1.3'],['A2','A2'],['A3.1','A3.1'],['A3.2','A3.2'],['A3.3','A3.3'],['A4','A4'],['A5','A5'],['A6','A6'],['A7.1','A7.1'],['A7.2','A7.2'],['A7.3','A7.3'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3'],['F4','F4'],['F5','F5']]},'3':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B','B'],['C','C'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3'],['G1','G1'],['G2','G2'],['G3','G3'],['H1','H1'],['H2','H2'],['H3','H3'],['H4','H4']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B','B'],['C','C'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3'],['G1','G1'],['G2','G2'],['G3','G3'],['H1','H1'],['H2','H2'],['H3','H3'],['H4','H4']]},'9':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['A4','A4'],['A5.1','A5.1'],['A5.2','A5.2'],['A5.3','A5.3'],['B','B'],['C','C'],['D','D'],['E1','E1'],['E2','E2'],['E3.1','E3.1'],['E3.2','E3.2'],['E3.3','E3.3'],['E4','E4'],['F1','F1'],['F2','F2'],['F3','F3'],['F4','F4']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['A4','A4'],['A5.1','A5.1'],['A5.2','A5.2'],['A5.3','A5.3'],['B','B'],['C','C'],['D','D'],['E1','E1'],['E2','E2'],['E3.1','E3.1'],['E3.2','E3.2'],['E3.3','E3.3'],['E4','E4'],['F1','F1'],['F2','F2'],['F3','F3'],['F4','F4']]},'12':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1.1','A1.1'],['A1.2','A1.2'],['A1.3','A1.3'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3'],['E','E'],['F1','F1'],['F2','F2']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1.1','A1.1'],['A1.2','A1.2'],['A1.3','A1.3'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3'],['E','E'],['F1','F1'],['F2','F2']]},'14':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2.1','E2.1'],['E2.2','E2.2'],['E2.3','E2.3'],['E3','E3'],['E4','E4'],['E5','E5']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2.1','E2.1'],['E2.2','E2.2'],['E2.3','E2.3'],['E3','E3'],['E4','E4'],['E5','E5']]},'15':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['B1','B1'],['B2','B2'],['B3.1','B3.1'],['B3.2','B3.2'],['B3.3','B3.3'],['C','C'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['B1','B1'],['B2','B2'],['B3.1','B3.1'],['B3.2','B3.2'],['B3.3','B3.3'],['C','C'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2'],['E3','E3'],['F1','F1'],['F2','F2'],['F3','F3']]},'8':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1.1','A1.1'],['A1.2','A1.2'],['A1.3','A1.3'],['A2','A2'],['A3','A3'],['B1.1','B1.1'],['B1.2','B1.2'],['B1.3','B1.3'],['B2','B2'],['B3.1','B3.1'],['B3.2','B3.2'],['B3.3','B3.3'],['C1','C1'],['C2','C2'],['C3','C3'],['C4','C4'],['C5','C5'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1.1','A1.1'],['A1.2','A1.2'],['A1.3','A1.3'],['A2','A2'],['A3','A3'],['B1.1','B1.1'],['B1.2','B1.2'],['B1.3','B1.3'],['B2','B2'],['B3.1','B3.1'],['B3.2','B3.2'],['B3.3','B3.3'],['C1','C1'],['C2','C2'],['C3','C3'],['C4','C4'],['C5','C5'],['D1','D1'],['D2','D2'],['D3','D3'],['E1','E1'],['E2','E2']]},'4':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['A4','A4'],['A5','A5'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3','C3'],['C4','C4'],['C5','C5'],['C6','C6'],['C7','C7'],['D1','D1'],['D2.1','D2.1'],['D2.2','D2.2'],['D2.3','D2.3'],['D3','D3'],['E1','E1'],['E2','E2']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['A4','A4'],['A5','A5'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3','C3'],['C4','C4'],['C5','C5'],['C6','C6'],['C7','C7'],['D1','D1'],['D2.1','D2.1'],['D2.2','D2.2'],['D2.3','D2.3'],['D3','D3'],['E1','E1'],['E2','E2']]},'19':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A','A'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A','A'],['B','B'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3']]},'10':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['A4','A4'],['B1','B1'],['B2','B2'],['B3','B3'],['B4','B4'],['B5.1','B5.1'],['B5.2','B5.2'],['B5.3','B5.3'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['A4','A4'],['B1','B1'],['B2','B2'],['B3','B3'],['B4','B4'],['B5.1','B5.1'],['B5.2','B5.2'],['B5.3','B5.3'],['C1','C1'],['C2','C2'],['C3','C3'],['D1','D1'],['D2','D2'],['D3','D3']]},'5':{'mmusculus_gene_vega__filter.band_start':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3.1','C3.1'],['C3.2','C3.2'],['C3.3','C3.3'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['E4','E4'],['E5','E5'],['F','F'],['G1','G1'],['G2','G2'],['G3','G3']],'mmusculus_gene_vega__filter.band_end':[['tip','tip'],['cenp','cenp'],['cenq','cenq'],['A1','A1'],['A2','A2'],['A3','A3'],['B1','B1'],['B2','B2'],['B3','B3'],['C1','C1'],['C2','C2'],['C3.1','C3.1'],['C3.2','C3.2'],['C3.3','C3.3'],['D','D'],['E1','E1'],['E2','E2'],['E3','E3'],['E4','E4'],['E5','E5'],['F','F'],['G1','G1'],['G2','G2'],['G3','G3']]}}};
+
+// Set up list of selected options for pushaction-menus as stored in session. Needed to
+// set the selected option for those menus in the pa-updating function.
+var ${param_prefix}sessionValueOfFiltermenu = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+
+// Initial update of all pushaction-menus on page load
+  //  foreach menu in big pushaction-info hash
+for(var pa_menuname in ${param_prefix}pushActionsOfFiltermenu) {
+   var pa_menu = document.mainform.elements[pa_menuname];
+   
+   if(pa_menu) {
+	 //  alert("getting pa-info for menu " + pa_menuname + ", obj " + pa_menu);
+      updateMenuPushactions(pa_menu, ${param_prefix}pushActionsOfFiltermenu, ${param_prefix}sessionValueOfFiltermenu);
+   }
+}
+
+
+[* filts_to_check = session.param("${param_prefix}filtercollections") *]
+[* IF !filts_to_check || filts_to_check == ' ' *]
+	[* filts_to_check = []  *]
+[* END *]
+[* tmp_array = [] *]
+[* FOREACH filt = filts_to_check *]
+	[* NEXT IF filt == " " *]
+		[* tmp_array.push("'$filt' : ''") *]
+[* END *]
+
+//]]>
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+	// setting the options of selectMenus to checked 
+	var ${param_prefix}sessionValueOfFiltermenu_1 = [* wq.perlhash2js(js_session_value_of_filtermenu) *];
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		updateSelectMenu(filterCollectionEltName, ${param_prefix}sessionValueOfFiltermenu_1);
+	}	
+
+</script>
+
+
+<script language="JavaScript" type="text/javascript" >
+// Update summary-tree on side panel according to info stored in the session, defer works for internet explorer OPERATION ABORTED ERROR
+
+	for(var filterCollectionEltName in {
+		[* tmp_array.join(",\n") *]}) 
+	{
+		//alert('Updating filters in fcollection '+filterCollectionEltName);
+   		//enableFiltersInCollection(filterCollectionEltName);
+		//This enableFiltersUpdateSummaryPanel function is not defined anywhere? [why ? It is there in javascript....]
+		enableFiltersUpdateSummaryPanel(filterCollectionEltName);
+	}
+	
+</script>
+
+
+
+</div>
+
+</td>
+</tr>
+</table>
+
+</div>
+

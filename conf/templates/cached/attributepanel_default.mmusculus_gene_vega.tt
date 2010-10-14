@@ -1,0 +1,2400 @@
+[% TAGS star %]
+<div id="mmusculus_gene_vega__attributepanel" style="display: none; width:100%; height:100%; overflow:auto;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please select columns to be included in the output and hit 'Results' when ready</b></div>
+<div class="mart_attributepage_selection floatholder">
+
+<input type="hidden" name="" value="" /><div class="mart_attributepage_selection_col">
+  	<input type="radio" name="mmusculus_gene_vega__attributepage" value="feature_page" 
+  	onclick="
+  	if(this.checked) 
+  	{ 
+  		showPanelHideSiblings('mmusculus_gene_vega__attributepanel__feature_page'); 
+  		expandListCompactSiblings('mmusculus_gene_vega__feature_page__attributelist'); 
+  	} 
+  	resetResultsPanel();"
+  	[* IF session.param("mmusculus_gene_vega__attributepage").defined 
+  		&& session.param("mmusculus_gene_vega__attributepage") == "feature_page" *]
+ 		checked="checked" 
+	[* ELSIF "feature_page" == "feature_page" *]
+		checked="checked" 
+	[* END *]
+	/>
+			<a title="General Gene Features">Features</a>  		<br />  	<input type="radio" name="mmusculus_gene_vega__attributepage" value="structure" 
+  	onclick="
+  	if(this.checked) 
+  	{ 
+  		showPanelHideSiblings('mmusculus_gene_vega__attributepanel__structure'); 
+  		expandListCompactSiblings('mmusculus_gene_vega__structure__attributelist'); 
+  	} 
+  	resetResultsPanel();"
+  	[* IF session.param("mmusculus_gene_vega__attributepage").defined 
+  		&& session.param("mmusculus_gene_vega__attributepage") == "structure" *]
+ 		checked="checked" 
+	[* ELSIF "structure" == "feature_page" *]
+		checked="checked" 
+	[* END *]
+	/>
+			<a title="Details on Genomic Structures">Structures</a>  		<br /></div>
+<div class="mart_attributepage_selection_col">
+      	<input type="radio" name="mmusculus_gene_vega__attributepage" value="sequences" 
+  	onclick="
+  	if(this.checked) 
+  	{ 
+  		showPanelHideSiblings('mmusculus_gene_vega__attributepanel__sequences'); 
+  		expandListCompactSiblings('mmusculus_gene_vega__sequences__attributelist'); 
+  	} 
+  	resetResultsPanel();"
+  	[* IF session.param("mmusculus_gene_vega__attributepage").defined 
+  		&& session.param("mmusculus_gene_vega__attributepage") == "sequences" *]
+ 		checked="checked" 
+	[* ELSIF "sequences" == "feature_page" *]
+		checked="checked" 
+	[* END *]
+	/>
+	Sequences  		<br /></div>
+<!-- this is just a dummy div to prevent the contents of attriubte tree collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+
+</div><div id="mmusculus_gene_vega__attributepages">
+
+  <input type="hidden" name="mmusculus_gene_vega__attributepages__current_visible_section" value="[* session.param('mmusculus_gene_vega__attributepages__current_visible_section') || 'mmusculus_gene_vega__attributepanel__feature_page' *]" />
+
+<div id="mmusculus_gene_vega__attributepanel__feature_page" style="display: none">
+
+[* all_attributepages.push("mmusculus_gene_vega__feature_page") *]
+
+<div class="mart_attributepanel">
+
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}feature_page__attributegroup.gene", "GENE:", "hide", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]feature_page__attributecollection.vega_attributes">
+		<span class="mart_attributecollection_title">		<a title="Vega Annotated Attributes and Features">Vega</a></span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}feature_page__attribute.vega_gene_id__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.vega_gene_id" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.vega_gene_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.vega_gene_id','VEGA gene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.vega_gene_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.vega_gene_id');
+  }  "/><a title="Vega Stable ID of the Gene">VEGA gene ID</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.vega_transcript_id__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.vega_transcript_id" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.vega_transcript_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.vega_transcript_id','VEGA transcript ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.vega_transcript_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.vega_transcript_id');
+  }  "/><a title="Vega Stable ID of the Transcript">VEGA transcript ID</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.vega_translation_id__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.vega_translation_id" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.vega_translation_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.vega_translation_id','VEGA protein ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.vega_translation_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.vega_translation_id');
+  }  "/>VEGA protein ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.canonical_transcript_stable_id__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.canonical_transcript_stable_id" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.canonical_transcript_stable_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.canonical_transcript_stable_id','Canonical transcript stable ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.canonical_transcript_stable_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.canonical_transcript_stable_id');
+  }  "/>Canonical transcript stable ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.description__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.description" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.description'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.description','Description'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.description'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.description');
+  }  "/>Description
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.chromosome_name__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.chromosome_name" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.chromosome_name'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.chromosome_name','Chromosome Name'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.chromosome_name'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.chromosome_name');
+  }  "/><a title="Chromosome Name">Chromosome Name</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.start_position__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.start_position" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.start_position'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.start_position','Gene Start (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.start_position'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.start_position');
+  }  "/><a title="Start Coordinate of the gene in chromosomal coordinates.">Gene Start (bp)</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.end_position__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.end_position" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.end_position'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.end_position','Gene End (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.end_position'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.end_position');
+  }  "/><a title="End Coordinate of the gene in chromosomal coordinates.">Gene End (bp)</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.strand__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.strand" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.strand'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.strand','Strand'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.strand'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.strand');
+  }  "/><a title="Orientation of genes on chromosome.">Strand</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.band__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.band" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.band'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.band','Band'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.band'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.band');
+  }  "/><a title="Band of chromosome where genes occur.">Band</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.transcript_start__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.transcript_start" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_start'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_start','Transcript Start (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_start'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_start');
+  }  "/><a title="Start Coordinate of the transcript in chromosomal coordinates.">Transcript Start (bp)</a>
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}feature_page__attribute.transcript_end__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.transcript_end" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_end'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_end','Transcript End (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_end'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_end');
+  }  "/><a title="End Coordinate of the gene in chromosomal coordinates.">Transcript End (bp)</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.external_gene_id__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.external_gene_id" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.external_gene_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.external_gene_id','External Gene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.external_gene_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.external_gene_id');
+  }  "/>External Gene ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.external_transcript_id__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.external_transcript_id" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.external_transcript_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.external_transcript_id','External Transcript ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.external_transcript_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.external_transcript_id');
+  }  "/>External Transcript ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.external_gene_db__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.external_gene_db" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.external_gene_db'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.external_gene_db','External Gene DB'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.external_gene_db'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.external_gene_db');
+  }  "/>External Gene DB
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.transcript_db_name__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.transcript_db_name" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_db_name'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_db_name','External Transcript DB'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_db_name'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_db_name');
+  }  "/>External Transcript DB
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.transcript_count__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.transcript_count" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_count'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_count','Transcript count'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_count'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_count');
+  }  "/>Transcript count
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.gene_biotype__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.gene_biotype" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.gene_biotype'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.gene_biotype','Gene Biotype'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.gene_biotype'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.gene_biotype');
+  }  "/>Gene Biotype
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.transcript_biotype__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.transcript_biotype" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_biotype'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_biotype','Transcript Biotype'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_biotype'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_biotype');
+  }  "/>Transcript Biotype
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.source__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.source" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.source'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.source','Source'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.source'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.source');
+  }  "/>Source
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.status__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.status" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.status'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.status','Status (gene)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.status'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.status');
+  }  "/>Status (gene)
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.transcript_status__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.transcript_status" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.vega_attributes_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.vega_attributes_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_status'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_status','Status (transcript)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.transcript_status'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.transcript_status');
+  }  "/>Status (transcript)
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}feature_page__attributegroup.external", "EXTERNAL:", "", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]feature_page__attributecollection.xref">
+		<span class="mart_attributecollection_title">		<a title="Information from external database sources.">External References</a></span>
+
+ 		(max 3)
+	<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}feature_page__attribute.go_id__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.go_id" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.go_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.go_id','GO ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.go_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.go_id');
+  }  "/>GO ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.ccds__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.ccds" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.ccds'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.ccds','CCDS ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.ccds'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.ccds');
+  }  "/>CCDS ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.ens_mm_gene__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.ens_mm_gene" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.ens_mm_gene'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.ens_mm_gene','Ensembl Mouse Gene'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.ens_mm_gene'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.ens_mm_gene');
+  }  "/>Ensembl Mouse Gene
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.enst_cds__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.enst_cds" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.enst_cds'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.enst_cds','ENST CDS ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.enst_cds'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.enst_cds');
+  }  "/>ENST CDS ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.enst_ident__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.enst_ident" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.enst_ident'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.enst_ident','ENST Identical ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.enst_ident'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.enst_ident');
+  }  "/>ENST Identical ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.mgi_id__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.mgi_id" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.mgi_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.mgi_id','MGI ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.mgi_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.mgi_id');
+  }  "/>MGI ID
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}feature_page__attribute.mgi_symbol__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.mgi_symbol" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.mgi_symbol'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.mgi_symbol','MGI symbol'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.mgi_symbol'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.mgi_symbol');
+  }  "/>MGI symbol
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.refseq_dna__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.refseq_dna" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.refseq_dna'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.refseq_dna','RefSeq DNA ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.refseq_dna'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.refseq_dna');
+  }  "/>RefSeq DNA ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.refseq_peptide__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.refseq_peptide" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.refseq_peptide'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.refseq_peptide','RefSeq protein ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.refseq_peptide'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.refseq_peptide');
+  }  "/>RefSeq protein ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.entrezgene__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.entrezgene" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.entrezgene'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.entrezgene','EntrezGene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.entrezgene'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.entrezgene');
+  }  "/>EntrezGene ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.uniprot_swissprot__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.uniprot_swissprot" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.xref_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.xref_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.uniprot_swissprot'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.uniprot_swissprot','UniProt/SwissProt Accession'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.uniprot_swissprot'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.uniprot_swissprot');
+  }  "/>UniProt/SwissProt Accession
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}feature_page__attributegroup.protein", "PROTEIN:", "", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]feature_page__attributecollection.prot_interpro">
+		<span class="mart_attributecollection_title">		<a title="Interpro protein identifiers and data.">InterPro</a></span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}feature_page__attribute.interpro__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.interpro" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.prot_interpro_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.prot_interpro_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.interpro'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.interpro','Interpro ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.interpro'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.interpro');
+  }  "/><a title="InterPro Accession ID">Interpro ID</a>
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.interpro_short_description__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.interpro_short_description" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.prot_interpro_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.prot_interpro_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.interpro_short_description'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.interpro_short_description','Interpro Short Description'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.interpro_short_description'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.interpro_short_description');
+  }  "/><a title="InterPro Short Description">Interpro Short Description</a>
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}feature_page__attribute.interpro_description__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.interpro_description" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.prot_interpro_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.prot_interpro_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.interpro_description'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.interpro_description','Interpro Description'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.interpro_description'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.interpro_description');
+  }  "/><a title="InterPro Description">Interpro Description</a>
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]feature_page__attributecollection.prot_domain">
+		<span class="mart_attributecollection_title">		Domains</span>
+
+ 		(max 2)
+	<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}feature_page__attribute.profile__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.profile" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.prot_domain_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.prot_domain_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.profile'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.profile','Profile ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.profile'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.profile');
+  }  "/>Profile ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.prints__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.prints" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.prot_domain_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.prot_domain_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.prints'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.prints','Prints ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.prints'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.prints');
+  }  "/>Prints ID
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}feature_page__attribute.pfam__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.pfam" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.prot_domain_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.prot_domain_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.pfam'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.pfam','Pfam ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.pfam'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.pfam');
+  }  "/>Pfam ID
+
+</div>
+<div class="attribute" id="${param_prefix}feature_page__attribute.prosite__container">
+  <input type="checkbox" name="${param_prefix}feature_page__attribute.prosite" 
+  onclick="check('[* param_prefix*]feature_page__attributecollection.prot_domain_a', 0); 
+  check('[* param_prefix*]feature_page__attributecollection.prot_domain_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}feature_page__attribute.prosite'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.prosite','Prosite ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}feature_page__attribute.prosite'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}feature_page__attributelist', '${param_prefix}feature_page__attribute.prosite');
+  }  "/>Prosite ID
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// Update summary-tree on side panel according to enabled-attributes info stored in 
+// the session OR the list of default attributes to pre-enable (if any).
+
+[* atts_to_check = session.param("${vs_param_prefix}feature_page__attributelist") *]
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+//1: atts_to_check=     '[* atts_to_check || "[undef]" *]'
+//1: atts_to_check.size='[* atts_to_check.size() || "[undef]" *]'
+
+[* IF !atts_to_check || atts_to_check == ' ' *]
+  [* atts_to_check = ["${param_prefix}feature_page__attribute.vega_gene_id","${param_prefix}feature_page__attribute.vega_transcript_id"]  *]
+[* END *]
+       
+// default_attributes.join()='[* default_attributes.join('|') *]'
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+[* tmp_array = [] *]
+[* FOREACH att = atts_to_check *]
+  [* NEXT IF att == " " *]
+  [* tmp_array.push("'$att' : ''") *]
+[* END *]
+
+for(var attributeEltName in {
+
+[* tmp_array.join(",\n") *]
+
+}) {
+    var attributeCheckboxElt = document.mainform.elements[attributeEltName];
+    //alert('Updating summary panel with enabled attribute '+attributeEltName);
+    if(attributeCheckboxElt && attributeCheckboxElt.type == 'checkbox') {
+      attributeCheckboxElt.checked = 'checked';
+      attributeCheckboxElt.onchange();
+    }
+    else {
+        //alert('Checkbox for attribute '+attributeEltName+' not found, trying attcollection radio buttons instead');
+        var attributeRadiobuttonElt = document.mainform.elements[attributeEltName];
+        if(attributeRadiobuttonElt) {
+            //alert('Updating summary panel with enabled (radiobutton) attribute '+attributeEltName);
+            attributeRadiobuttonElt.click();
+        }
+    }
+}
+
+
+//]]>
+</script>
+
+</div>
+
+<div id="mmusculus_gene_vega__attributepanel__structure" style="display: none">
+
+[* all_attributepages.push("mmusculus_gene_vega__structure") *]
+
+<div class="mart_attributepanel">
+
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}structure__attributegroup.gene", "GENE:", "hide", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]structure__attributecollection.vega_attributes_structure">
+		<span class="mart_attributecollection_title">		<a title="Vega Annotated Attributes and Features">Vega</a></span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}structure__attribute.vega_gene_id__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.vega_gene_id" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.vega_gene_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.vega_gene_id','VEGA gene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.vega_gene_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.vega_gene_id');
+  }  "/>VEGA gene ID
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.vega_transcript_id__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.vega_transcript_id" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.vega_transcript_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.vega_transcript_id','VEGA transcript ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.vega_transcript_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.vega_transcript_id');
+  }  "/>VEGA transcript ID
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.chromosome_name__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.chromosome_name" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.chromosome_name'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.chromosome_name','Chromosome Name'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.chromosome_name'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.chromosome_name');
+  }  "/>Chromosome Name
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.start_position__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.start_position" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.start_position'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.start_position','Gene Start (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.start_position'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.start_position');
+  }  "/>Gene Start (bp)
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.end_position__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.end_position" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.end_position'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.end_position','Gene End (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.end_position'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.end_position');
+  }  "/>Gene End (bp)
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.transcript_start__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.transcript_start" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.transcript_start'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.transcript_start','Transcript Start (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.transcript_start'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.transcript_start');
+  }  "/>Transcript Start (bp)
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.transcript_end__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.transcript_end" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.transcript_end'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.transcript_end','Transcript End (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.transcript_end'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.transcript_end');
+  }  "/>Transcript End (bp)
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}structure__attribute.strand__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.strand" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.strand'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.strand','Strand'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.strand'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.strand');
+  }  "/>Strand
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.external_gene_id__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.external_gene_id" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.external_gene_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.external_gene_id','External Gene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.external_gene_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.external_gene_id');
+  }  "/>External Gene ID
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.external_gene_db__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.external_gene_db" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.external_gene_db'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.external_gene_db','External Gene DB'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.external_gene_db'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.external_gene_db');
+  }  "/>External Gene DB
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.transcript_count__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.transcript_count" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.transcript_count'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.transcript_count','Transcript count'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.transcript_count'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.transcript_count');
+  }  "/>Transcript count
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.description__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.description" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.description'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.description','Description'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.description'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.description');
+  }  "/>Description
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.gene_biotype__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.gene_biotype" 
+  onclick="check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.vega_attributes_structure_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.gene_biotype'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.gene_biotype','Gene Biotype'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.gene_biotype'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.gene_biotype');
+  }  "/>Gene Biotype
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}structure__attributegroup.exon", "EXON:", "", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]structure__attributecollection.exon_atts">
+		<span class="mart_attributecollection_title">		Exon Information</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}structure__attribute.vega_exon_id__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.vega_exon_id" 
+  onclick="check('[* param_prefix*]structure__attributecollection.exon_atts_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.exon_atts_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.vega_exon_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.vega_exon_id','Vega Exon ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.vega_exon_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.vega_exon_id');
+  }  "/>Vega Exon ID
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.exon_chrom_start__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.exon_chrom_start" 
+  onclick="check('[* param_prefix*]structure__attributecollection.exon_atts_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.exon_atts_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.exon_chrom_start'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.exon_chrom_start','Exon Chr Start (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.exon_chrom_start'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.exon_chrom_start');
+  }  "/>Exon Chr Start (bp)
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.exon_chrom_end__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.exon_chrom_end" 
+  onclick="check('[* param_prefix*]structure__attributecollection.exon_atts_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.exon_atts_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.exon_chrom_end'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.exon_chrom_end','Exon Chr End (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.exon_chrom_end'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.exon_chrom_end');
+  }  "/>Exon Chr End (bp)
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}structure__attribute.is_constitutive__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.is_constitutive" 
+  onclick="check('[* param_prefix*]structure__attributecollection.exon_atts_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.exon_atts_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.is_constitutive'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.is_constitutive','Constitutive Exon'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.is_constitutive'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.is_constitutive');
+  }  "/>Constitutive Exon
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.rank__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.rank" 
+  onclick="check('[* param_prefix*]structure__attributecollection.exon_atts_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.exon_atts_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.rank'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.rank','Exon Rank in Transcript'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.rank'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.rank');
+  }  "/>Exon Rank in Transcript
+
+</div>
+<div class="attribute" id="${param_prefix}structure__attribute.phase__container">
+  <input type="checkbox" name="${param_prefix}structure__attribute.phase" 
+  onclick="check('[* param_prefix*]structure__attributecollection.exon_atts_a', 0); 
+  check('[* param_prefix*]structure__attributecollection.exon_atts_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}structure__attribute.phase'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.phase','phase'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}structure__attribute.phase'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}structure__attributelist', '${param_prefix}structure__attribute.phase');
+  }  "/>phase
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// Update summary-tree on side panel according to enabled-attributes info stored in 
+// the session OR the list of default attributes to pre-enable (if any).
+
+[* atts_to_check = session.param("${vs_param_prefix}structure__attributelist") *]
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+//1: atts_to_check=     '[* atts_to_check || "[undef]" *]'
+//1: atts_to_check.size='[* atts_to_check.size() || "[undef]" *]'
+
+[* IF !atts_to_check || atts_to_check == ' ' *]
+  [* atts_to_check = ["${param_prefix}structure__attribute.vega_gene_id","${param_prefix}structure__attribute.vega_transcript_id"]  *]
+[* END *]
+       
+// default_attributes.join()='[* default_attributes.join('|') *]'
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+[* tmp_array = [] *]
+[* FOREACH att = atts_to_check *]
+  [* NEXT IF att == " " *]
+  [* tmp_array.push("'$att' : ''") *]
+[* END *]
+
+for(var attributeEltName in {
+
+[* tmp_array.join(",\n") *]
+
+}) {
+    var attributeCheckboxElt = document.mainform.elements[attributeEltName];
+    //alert('Updating summary panel with enabled attribute '+attributeEltName);
+    if(attributeCheckboxElt && attributeCheckboxElt.type == 'checkbox') {
+      attributeCheckboxElt.checked = 'checked';
+      attributeCheckboxElt.onchange();
+    }
+    else {
+        //alert('Checkbox for attribute '+attributeEltName+' not found, trying attcollection radio buttons instead');
+        var attributeRadiobuttonElt = document.mainform.elements[attributeEltName];
+        if(attributeRadiobuttonElt) {
+            //alert('Updating summary panel with enabled (radiobutton) attribute '+attributeEltName);
+            attributeRadiobuttonElt.click();
+        }
+    }
+}
+
+
+//]]>
+</script>
+
+</div>
+
+<div id="mmusculus_gene_vega__attributepanel__sequences" style="display: none">
+
+[* all_attributepages.push("mmusculus_gene_vega__sequences") *]
+
+<div class="mart_attributepanel">
+
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}sequences__attributegroup.sequence", "SEQUENCES:", "hide", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]sequences__attributecollection.seq_scope_type">
+		<span class="mart_attributecollection_title">		Sequences</span>
+
+ 		(max 1)
+		   <br/>
+		   <img name="[* param_prefix*]sequences__attributecollection.seq_scope_type__image" src="/martview/images/blank.gif" alt=""/>	<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}sequences__attribute.transcript_exon_intron__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.transcript_exon_intron" value="${param_prefix}sequences__attribute.transcript_exon_intron" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.transcript_exon_intron'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.transcript_exon_intron','Unspliced (Transcript)'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_transcript_exon_intron.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>Unspliced (Transcript)
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.gene_exon_intron__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.gene_exon_intron" value="${param_prefix}sequences__attribute.gene_exon_intron" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.gene_exon_intron'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.gene_exon_intron','Unspliced (Gene)'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_gene_exon_intron.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>Unspliced (Gene)
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.transcript_flank__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.transcript_flank" value="${param_prefix}sequences__attribute.transcript_flank" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.transcript_flank'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.transcript_flank','Flank (Transcript)'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_transcript_flank.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>Flank (Transcript)
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.gene_flank__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.gene_flank" value="${param_prefix}sequences__attribute.gene_flank" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.gene_flank'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.gene_flank','Flank (Gene)'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_gene_flank.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>Flank (Gene)
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.coding_transcript_flank__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.coding_transcript_flank" value="${param_prefix}sequences__attribute.coding_transcript_flank" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.coding_transcript_flank'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.coding_transcript_flank','Flank-coding region (Transcript)'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_coding_transcript_flank.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>Flank-coding region (Transcript)
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.coding_gene_flank__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.coding_gene_flank" value="${param_prefix}sequences__attribute.coding_gene_flank" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.coding_gene_flank'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.coding_gene_flank','Flank-coding region (Gene)'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_coding_gene_flank.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>Flank-coding region (Gene)
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}sequences__attribute.5utr__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.5utr" value="${param_prefix}sequences__attribute.5utr" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.5utr'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.5utr','5&lsquo; UTR'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_5utr.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>5' UTR
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.3utr__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.3utr" value="${param_prefix}sequences__attribute.3utr" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.3utr'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.3utr','3&lsquo; UTR'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_3utr.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>3' UTR
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.gene_exon__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.gene_exon" value="${param_prefix}sequences__attribute.gene_exon" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.gene_exon'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.gene_exon','Exon sequences'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_gene_exon.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>Exon sequences
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.cdna__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.cdna" value="${param_prefix}sequences__attribute.cdna" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.cdna'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.cdna','cDNA sequences'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_cdna.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>cDNA sequences
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.coding__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.coding" value="${param_prefix}sequences__attribute.coding" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.coding'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.coding','Coding sequence'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_coding.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="	    updateDependentAttributes('${param_prefix}sequences__attribute.upstream_flank');	    updateDependentAttributes('${param_prefix}sequences__attribute.downstream_flank');   "/>Coding sequence
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.peptide__container">
+  <input type="radio" name="${param_prefix}sequences__attribute.peptide" value="${param_prefix}sequences__attribute.peptide" 
+  onclick="
+  document.mainform.elements['${param_prefix}sequences__attribute.peptide'].value = 'on'; 
+  addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.peptide','Protein'); 
+  this.checked = 'checked';
+  	document['[* param_prefix*]sequences__attributecollection.seq_scope_type__image'].src='/biomart/mview/images/gene_schematic/gene_schematic_peptide.gif'; 	var siblingNodes = getElements_mart(this.parentNode.parentNode.parentNode); 
+	for(var i=0; i<siblingNodes.length; i++) 
+	{ 
+		var sN=siblingNodes[i];
+	  	if (sN==this) continue;
+	  	if(sN.tagName == 'INPUT' && sN.type == 'hidden' && sN.value == 'on') 
+	  	{ 
+	  		sN.value = 'off'; 
+	  		removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+	  	} 
+	  	else if(sN.type == 'radio')
+	  	{ 
+			removeFromSummaryPanelList('${param_prefix}sequences__attributelist', sN.name); 
+			sN.checked = false;
+			sN.onchange();
+		}
+	}
+  onchange();" 
+  
+  onchange="   "/>Protein
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]sequences__attributecollection.upstream">
+		<span class="mart_attributecollection_title">		Upstream flank</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+
+
+<div class="attribute" id="${param_prefix}sequences__attribute.upstream_flank__container">  <input type="checkbox" name="${param_prefix}sequences__attribute.upstream_flank" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.upstream_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.upstream_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.upstream_flank'].value = 'on'; 
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.upstream_flank','Upstream flank ['+document.mainform.elements['${param_prefix}sequences__attributefilter.upstream_flank'].value+']'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.upstream_flank'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.upstream_flank');
+  }  "/>Upstream flank<input type="text" name="${param_prefix}sequences__attributefilter.upstream_flank" value="
+[* IF session.param("${param_prefix}sequences__attributefilter.upstream_flank").defined() *]
+  [* session.param("${param_prefix}sequences__attributefilter.upstream_flank") *]
+[* ELSE *]100[* END *]
+" 
+
+
+onblur="if(filterEltHasValue(this)) {    checkAttributeCheckbox('${param_prefix}sequences__attribute.upstream_flank');};" />
+
+
+
+		<script language="JavaScript" type="text/javascript" >
+		//<![CDATA[
+		// Set up the dependency map.
+		dependencyType['${param_prefix}sequences__attribute.upstream_flank'] = 'any';
+		dependencyMap['${param_prefix}sequences__attribute.upstream_flank'] = new Array();
+		var deps = 'snp,transcript_exon_intron,gene_exon_intron,transcript_flank,gene_flank,coding_transcript_flank,coding_gene_flank,transcript_exon,gene_exon,cdna,5utr,3utr,coding'.split(',');
+		for (var i = 0 ; i < deps.length; i++) {
+	 	dependencyMap['${param_prefix}sequences__attribute.upstream_flank'].push("${param_prefix}sequences__attribute."+deps[i]);
+	 	}
+	 	dependencyFilterMap['${param_prefix}sequences__attribute.upstream_flank'] = '${param_prefix}sequences__attributefilter.upstream_flank';
+	 	// By default, disable this one until another is checked.
+	   	document.mainform.elements['${param_prefix}sequences__attribute.upstream_flank'].disabled = 'true'; 
+	   	document.mainform.elements['${param_prefix}sequences__attributefilter.upstream_flank'].disabled = 'true'; 
+		//]]>
+		</script>      
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]sequences__attributecollection.downstream">
+		<span class="mart_attributecollection_title">		Downstream flank</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+
+
+<div class="attribute" id="${param_prefix}sequences__attribute.downstream_flank__container">  <input type="checkbox" name="${param_prefix}sequences__attribute.downstream_flank" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.downstream_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.downstream_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.downstream_flank'].value = 'on'; 
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.downstream_flank','Downstream flank ['+document.mainform.elements['${param_prefix}sequences__attributefilter.downstream_flank'].value+']'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.downstream_flank'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.downstream_flank');
+  }  "/>Downstream flank<input type="text" name="${param_prefix}sequences__attributefilter.downstream_flank" value="
+[* IF session.param("${param_prefix}sequences__attributefilter.downstream_flank").defined() *]
+  [* session.param("${param_prefix}sequences__attributefilter.downstream_flank") *]
+[* ELSE *]100[* END *]
+" 
+
+
+onblur="if(filterEltHasValue(this)) {    checkAttributeCheckbox('${param_prefix}sequences__attribute.downstream_flank');};" />
+
+
+
+		<script language="JavaScript" type="text/javascript" >
+		//<![CDATA[
+		// Set up the dependency map.
+		dependencyType['${param_prefix}sequences__attribute.downstream_flank'] = 'any';
+		dependencyMap['${param_prefix}sequences__attribute.downstream_flank'] = new Array();
+		var deps = 'snp,transcript_exon_intron,gene_exon_intron,transcript_flank,gene_flank,coding_transcript_flank,coding_gene_flank,transcript_exon,gene_exon,cdna,5utr,3utr,coding'.split(',');
+		for (var i = 0 ; i < deps.length; i++) {
+	 	dependencyMap['${param_prefix}sequences__attribute.downstream_flank'].push("${param_prefix}sequences__attribute."+deps[i]);
+	 	}
+	 	dependencyFilterMap['${param_prefix}sequences__attribute.downstream_flank'] = '${param_prefix}sequences__attributefilter.downstream_flank';
+	 	// By default, disable this one until another is checked.
+	   	document.mainform.elements['${param_prefix}sequences__attribute.downstream_flank'].disabled = 'true'; 
+	   	document.mainform.elements['${param_prefix}sequences__attributefilter.downstream_flank'].disabled = 'true'; 
+		//]]>
+		</script>      
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}sequences__attributegroup.header_info", "Header Information", "", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]sequences__attributecollection.gene">
+		<span class="mart_attributecollection_title">		Gene Information</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}sequences__attribute.vega_gene_id__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.vega_gene_id" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.vega_gene_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.vega_gene_id','VEGA gene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.vega_gene_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.vega_gene_id');
+  }  "/>VEGA gene ID
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.description__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.description" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.description'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.description','Description'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.description'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.description');
+  }  "/>Description
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.external_gene_id__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.external_gene_id" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.external_gene_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.external_gene_id','External Gene ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.external_gene_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.external_gene_id');
+  }  "/>External Gene ID
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.external_gene_db__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.external_gene_db" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.external_gene_db'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.external_gene_db','External Gene DB'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.external_gene_db'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.external_gene_db');
+  }  "/>External Gene DB
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}sequences__attribute.chromosome_name__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.chromosome_name" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.chromosome_name'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.chromosome_name','Chromosome Name'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.chromosome_name'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.chromosome_name');
+  }  "/>Chromosome Name
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.start_position__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.start_position" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.start_position'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.start_position','Gene Start (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.start_position'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.start_position');
+  }  "/>Gene Start (bp)
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.end_position__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.end_position" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.gene_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.gene_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.end_position'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.end_position','Gene End (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.end_position'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.end_position');
+  }  "/>Gene End (bp)
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]sequences__attributecollection.transcript">
+		<span class="mart_attributecollection_title">		Transcript Information</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}sequences__attribute.vega_transcript_id__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.vega_transcript_id" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.transcript_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.transcript_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.vega_transcript_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.vega_transcript_id','VEGA transcript ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.vega_transcript_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.vega_transcript_id');
+  }  "/>VEGA transcript ID
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.strand__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.strand" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.transcript_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.transcript_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.strand'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.strand','Strand'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.strand'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.strand');
+  }  "/>Strand
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}sequences__attribute.transcript_start__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.transcript_start" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.transcript_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.transcript_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.transcript_start'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.transcript_start','Transcript Start (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.transcript_start'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.transcript_start');
+  }  "/>Transcript Start (bp)
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.transcript_end__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.transcript_end" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.transcript_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.transcript_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.transcript_end'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.transcript_end','Transcript End (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.transcript_end'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.transcript_end');
+  }  "/>Transcript End (bp)
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]sequences__attributecollection.exon">
+		<span class="mart_attributecollection_title">		Exon Information</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}sequences__attribute.vega_exon_id__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.vega_exon_id" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.exon_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.exon_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.vega_exon_id'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.vega_exon_id','Vega Exon ID'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.vega_exon_id'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.vega_exon_id');
+  }  "/>Vega Exon ID
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.exon_chrom_start__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.exon_chrom_start" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.exon_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.exon_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.exon_chrom_start'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.exon_chrom_start','Exon Chr Start (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.exon_chrom_start'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.exon_chrom_start');
+  }  "/>Exon Chr Start (bp)
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.exon_chrom_end__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.exon_chrom_end" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.exon_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.exon_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.exon_chrom_end'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.exon_chrom_end','Exon Chr End (bp)'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.exon_chrom_end'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.exon_chrom_end');
+  }  "/>Exon Chr End (bp)
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}sequences__attribute.strand__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.strand" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.exon_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.exon_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.strand'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.strand','Strand'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.strand'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.strand');
+  }  "/>Strand
+
+</div>
+<div class="attribute" id="${param_prefix}sequences__attribute.rank__container">
+  <input type="checkbox" name="${param_prefix}sequences__attribute.rank" 
+  onclick="check('[* param_prefix*]sequences__attributecollection.exon_a', 0); 
+  check('[* param_prefix*]sequences__attributecollection.exon_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}sequences__attribute.rank'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.rank','Exon Rank in Transcript'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}sequences__attribute.rank'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}sequences__attributelist', '${param_prefix}sequences__attribute.rank');
+  }  "/>Exon Rank in Transcript
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// Update summary-tree on side panel according to enabled-attributes info stored in 
+// the session OR the list of default attributes to pre-enable (if any).
+
+[* atts_to_check = session.param("${vs_param_prefix}sequences__attributelist") *]
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+//1: atts_to_check=     '[* atts_to_check || "[undef]" *]'
+//1: atts_to_check.size='[* atts_to_check.size() || "[undef]" *]'
+
+[* IF !atts_to_check || atts_to_check == ' ' *]
+  [* atts_to_check = ["${param_prefix}sequences__attribute.peptide","${param_prefix}sequences__attribute.vega_gene_id","${param_prefix}sequences__attribute.vega_transcript_id"]  *]
+[* END *]
+       
+// default_attributes.join()='[* default_attributes.join('|') *]'
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+[* tmp_array = [] *]
+[* FOREACH att = atts_to_check *]
+  [* NEXT IF att == " " *]
+  [* tmp_array.push("'$att' : ''") *]
+[* END *]
+
+for(var attributeEltName in {
+
+[* tmp_array.join(",\n") *]
+
+}) {
+    var attributeCheckboxElt = document.mainform.elements[attributeEltName];
+    //alert('Updating summary panel with enabled attribute '+attributeEltName);
+    if(attributeCheckboxElt && attributeCheckboxElt.type == 'checkbox') {
+      attributeCheckboxElt.checked = 'checked';
+      attributeCheckboxElt.onchange();
+    }
+    else {
+        //alert('Checkbox for attribute '+attributeEltName+' not found, trying attcollection radio buttons instead');
+        var attributeRadiobuttonElt = document.mainform.elements[attributeEltName];
+        if(attributeRadiobuttonElt) {
+            //alert('Updating summary panel with enabled (radiobutton) attribute '+attributeEltName);
+            attributeRadiobuttonElt.click();
+        }
+    }
+}
+
+
+//]]>
+</script>
+
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// On initial page-load, set one att-page as the current visible one
+showPanelHideSiblings(document.mainform['mmusculus_gene_vega__attributepages__current_visible_section'].value);
+
+// Also expand attribute-list for the active attpage for this dataset
+var attpage2expand;
+var attPageRadios = document.getElementsByName('mmusculus_gene_vega__attributepage');
+for(var i=0;i < attPageRadios.length;i++) { 
+    if(attPageRadios[i].checked) {
+        attpage2expand = 'mmusculus_gene_vega__'+attPageRadios[i].value;
+        break;
+    } 
+}
+expandListCompactSiblings(attpage2expand+'__attributelist');
+
+//]]>
+</script>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+[* default_attributepage_for_export = "${param_prefix}feature_page" *]

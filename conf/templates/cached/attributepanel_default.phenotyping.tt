@@ -1,0 +1,1897 @@
+[% TAGS star %]
+<div id="phenotyping__attributepanel" style="display: none; width:100%; height:100%; overflow:auto;">
+<table width="100%" height="100%"  border="0" cellpadding="0" cellspacing="0" style="table-layout: fixed;">
+<tr>
+<td width="100%" height="100%" valign="top" align="left">
+
+<div class="dummyLine_1" align="center"><b>Please select columns to be included in the output and hit 'Results' when ready</b></div>
+	  	<input type="radio" style="display:none;" name="phenotyping__attributepage" value="attributes" 
+	  	onclick="
+  		if(this.checked) 
+	  	{ 
+  			showPanelHideSiblings('phenotyping__attributepanel__attributes'); 
+  			expandListCompactSiblings('phenotyping__attributes__attributelist'); 
+	  	} 
+	  	resetResultsPanel();"
+  		[* IF session.param("phenotyping__attributepage").defined 
+  		&& session.param("phenotyping__attributepage") == "attributes" *]
+ 		checked="checked" 
+		[* ELSIF "attributes" == "attributes" *]
+		checked="checked" 
+		[* END *]
+		/><div id="phenotyping__attributepages">
+
+  <input type="hidden" name="phenotyping__attributepages__current_visible_section" value="[* session.param('phenotyping__attributepages__current_visible_section') || 'phenotyping__attributepanel__attributes' *]" />
+
+<div id="phenotyping__attributepanel__attributes" style="display: none">
+
+[* all_attributepages.push("phenotyping__attributes") *]
+
+<div class="mart_attributepanel">
+
+<div class="mart_attributegroup floatholder">
+[* render_collapse_controls("${param_prefix}attributes__attributegroup.features", "FEATURES", "show", "" ) *]
+	<div class="mart_attributecollection" id="[* param_prefix*]attributes__attributecollection.gene_and_escell">
+		<span class="mart_attributecollection_title">		Gene and ES Cell Details</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}attributes__attribute.marker_symbol__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.marker_symbol" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_and_escell_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_and_escell_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.marker_symbol'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.marker_symbol','Marker Symbol'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.marker_symbol'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.marker_symbol');
+  }  "/>Marker Symbol
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.escell_clone_name__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.escell_clone_name" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_and_escell_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_and_escell_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.escell_clone_name'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.escell_clone_name','ES Cell Clone Name'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.escell_clone_name'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.escell_clone_name');
+  }  "/>ES Cell Clone Name
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}attributes__attribute.colony_prefix__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.colony_prefix" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.gene_and_escell_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.gene_and_escell_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.colony_prefix'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.colony_prefix','Colony prefix'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.colony_prefix'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.colony_prefix');
+  }  "/>Colony prefix
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+	<div class="mart_attributecollection" id="[* param_prefix*]attributes__attributecollection.pheno_tests">
+		<span class="mart_attributecollection_title">		pheno tests</span>
+		<br />
+
+
+
+<table cellpadding="0" border= "0" width="100%" style="table-layout: fixed;">
+<tr>	
+<td align="left" width="50%" valign="top">
+<div class="attribute" id="${param_prefix}attributes__attribute.abr__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.abr" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.abr'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.abr','Auditory Brainstem Response'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.abr'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.abr');
+  }  "/>Auditory Brainstem Response
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.abr_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.abr_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.abr_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.abr_comment','Auditory Brainstem Response Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.abr_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.abr_comment');
+  }  "/>Auditory Brainstem Response Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.abr_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.abr_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.abr_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.abr_url','Auditory Brainstem Response URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.abr_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.abr_url');
+  }  "/>Auditory Brainstem Response URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.adult_expression__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.adult_expression" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.adult_expression'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.adult_expression','Adult Expression'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.adult_expression'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.adult_expression');
+  }  "/>Adult Expression
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.adult_expression_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.adult_expression_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.adult_expression_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.adult_expression_comment','Adult Expression Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.adult_expression_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.adult_expression_comment');
+  }  "/>Adult Expression Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.adult_expression_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.adult_expression_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.adult_expression_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.adult_expression_url','Adult Expression URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.adult_expression_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.adult_expression_url');
+  }  "/>Adult Expression URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.blood_pressure__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.blood_pressure" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.blood_pressure'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.blood_pressure','Blood Pressure'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.blood_pressure'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.blood_pressure');
+  }  "/>Blood Pressure
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.blood_pressure_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.blood_pressure_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.blood_pressure_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.blood_pressure_comment','Blood Pressure Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.blood_pressure_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.blood_pressure_comment');
+  }  "/>Blood Pressure Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.blood_pressure_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.blood_pressure_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.blood_pressure_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.blood_pressure_url','Blood Pressure URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.blood_pressure_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.blood_pressure_url');
+  }  "/>Blood Pressure URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.body_weight_curve__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.body_weight_curve" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.body_weight_curve'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.body_weight_curve','Body Weight Curve'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.body_weight_curve'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.body_weight_curve');
+  }  "/>Body Weight Curve
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.body_weight_curve_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.body_weight_curve_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.body_weight_curve_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.body_weight_curve_comment','Body Weight Curve Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.body_weight_curve_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.body_weight_curve_comment');
+  }  "/>Body Weight Curve Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.body_weight_curve_normal_chow__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.body_weight_curve_normal_chow" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.body_weight_curve_normal_chow'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.body_weight_curve_normal_chow','Body Weight Curve normal chow'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.body_weight_curve_normal_chow'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.body_weight_curve_normal_chow');
+  }  "/>Body Weight Curve normal chow
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.body_weight_curve_normal_chow_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.body_weight_curve_normal_chow_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.body_weight_curve_normal_chow_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.body_weight_curve_normal_chow_comment','Body Weight Curve normal chow Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.body_weight_curve_normal_chow_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.body_weight_curve_normal_chow_comment');
+  }  "/>Body Weight Curve normal chow Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.brain_histology__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.brain_histology" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.brain_histology'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.brain_histology','Brain Histology'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.brain_histology'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.brain_histology');
+  }  "/>Brain Histology
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.brain_histology_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.brain_histology_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.brain_histology_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.brain_histology_comment','Brain Histology Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.brain_histology_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.brain_histology_comment');
+  }  "/>Brain Histology Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.calorimetry__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.calorimetry" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.calorimetry'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.calorimetry','Calorimetry'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.calorimetry'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.calorimetry');
+  }  "/>Calorimetry
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.calorimetry_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.calorimetry_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.calorimetry_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.calorimetry_comment','Calorimetry Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.calorimetry_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.calorimetry_comment');
+  }  "/>Calorimetry Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.calorimetry_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.calorimetry_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.calorimetry_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.calorimetry_url','Calorimetry URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.calorimetry_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.calorimetry_url');
+  }  "/>Calorimetry URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.core_temperature__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.core_temperature" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.core_temperature'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.core_temperature','Core Temperature'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.core_temperature'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.core_temperature');
+  }  "/>Core Temperature
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.core_temperature_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.core_temperature_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.core_temperature_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.core_temperature_comment','Core Temperature Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.core_temperature_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.core_temperature_comment');
+  }  "/>Core Temperature Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.core_temperature_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.core_temperature_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.core_temperature_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.core_temperature_url','Core Temperature URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.core_temperature_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.core_temperature_url');
+  }  "/>Core Temperature URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.dexa__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.dexa" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.dexa'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dexa','Dexa'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.dexa'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dexa');
+  }  "/>Dexa
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.dexa_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.dexa_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.dexa_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dexa_comment','Dexa Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.dexa_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dexa_comment');
+  }  "/>Dexa Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.dexa_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.dexa_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.dexa_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dexa_url','Dexa URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.dexa_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dexa_url');
+  }  "/>Dexa URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.dysmorphology__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.dysmorphology" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.dysmorphology'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dysmorphology','Dysmorphology'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.dysmorphology'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dysmorphology');
+  }  "/>Dysmorphology
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.dysmorphology_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.dysmorphology_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.dysmorphology_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dysmorphology_comment','Dysmorphology Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.dysmorphology_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dysmorphology_comment');
+  }  "/>Dysmorphology Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.dysmorphology_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.dysmorphology_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.dysmorphology_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dysmorphology_url','Dysmorphology URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.dysmorphology_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.dysmorphology_url');
+  }  "/>Dysmorphology URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.embryo_expression__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.embryo_expression" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.embryo_expression'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.embryo_expression','Embryo Expression'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.embryo_expression'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.embryo_expression');
+  }  "/>Embryo Expression
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.embryo_expression_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.embryo_expression_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.embryo_expression_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.embryo_expression_comment','Embryo Expression Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.embryo_expression_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.embryo_expression_comment');
+  }  "/>Embryo Expression Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.eye_morphology__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.eye_morphology" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.eye_morphology'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.eye_morphology','Eye Morphology'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.eye_morphology'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.eye_morphology');
+  }  "/>Eye Morphology
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.eye_morphology_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.eye_morphology_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.eye_morphology_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.eye_morphology_comment','Eye Morphology Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.eye_morphology_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.eye_morphology_comment');
+  }  "/>Eye Morphology Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.fasted_clinical_chemistry__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.fasted_clinical_chemistry" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.fasted_clinical_chemistry'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fasted_clinical_chemistry','Fasted Clinical Chemistry'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.fasted_clinical_chemistry'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fasted_clinical_chemistry');
+  }  "/>Fasted Clinical Chemistry
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.fasted_clinical_chemistry_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.fasted_clinical_chemistry_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.fasted_clinical_chemistry_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fasted_clinical_chemistry_comment','Fasted Clinical Chemistry Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.fasted_clinical_chemistry_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fasted_clinical_chemistry_comment');
+  }  "/>Fasted Clinical Chemistry Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.fasted_clinical_chemistry_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.fasted_clinical_chemistry_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.fasted_clinical_chemistry_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fasted_clinical_chemistry_url','Fasted Clinical Chemistry URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.fasted_clinical_chemistry_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fasted_clinical_chemistry_url');
+  }  "/>Fasted Clinical Chemistry URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.fertility__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.fertility" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.fertility'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fertility','Fertility'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.fertility'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fertility');
+  }  "/>Fertility
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.fertility_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.fertility_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.fertility_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fertility_comment','Fertility Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.fertility_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.fertility_comment');
+  }  "/>Fertility Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.full_clinical_chemistry__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.full_clinical_chemistry" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.full_clinical_chemistry'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.full_clinical_chemistry','Full Clinical Chemistry'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.full_clinical_chemistry'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.full_clinical_chemistry');
+  }  "/>Full Clinical Chemistry
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.full_clinical_chemistry_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.full_clinical_chemistry_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.full_clinical_chemistry_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.full_clinical_chemistry_comment','Full Clinical Chemistry Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.full_clinical_chemistry_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.full_clinical_chemistry_comment');
+  }  "/>Full Clinical Chemistry Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.full_clinical_chemistry_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.full_clinical_chemistry_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.full_clinical_chemistry_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.full_clinical_chemistry_url','Full Clinical Chemistry URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.full_clinical_chemistry_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.full_clinical_chemistry_url');
+  }  "/>Full Clinical Chemistry URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.grip_strength__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.grip_strength" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.grip_strength'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.grip_strength','Grip Strength'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.grip_strength'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.grip_strength');
+  }  "/>Grip Strength
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.grip_strength_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.grip_strength_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.grip_strength_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.grip_strength_comment','Grip Strength Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.grip_strength_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.grip_strength_comment');
+  }  "/>Grip Strength Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.grip_strength_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.grip_strength_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.grip_strength_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.grip_strength_url','Grip Strength URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.grip_strength_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.grip_strength_url');
+  }  "/>Grip Strength URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.haematology__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.haematology" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.haematology'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.haematology','Haematology'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.haematology'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.haematology');
+  }  "/>Haematology
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.haematology_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.haematology_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.haematology_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.haematology_comment','Haematology Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.haematology_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.haematology_comment');
+  }  "/>Haematology Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.haematology_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.haematology_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.haematology_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.haematology_url','Haematology URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.haematology_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.haematology_url');
+  }  "/>Haematology URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.heart_histology__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.heart_histology" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_histology'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_histology','Heart Histology'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_histology'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_histology');
+  }  "/>Heart Histology
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.heart_histology_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.heart_histology_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_histology_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_histology_comment','Heart Histology Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_histology_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_histology_comment');
+  }  "/>Heart Histology Comment
+
+</div>
+
+</td>
+
+<td align="left" width="45%" valign="top">
+
+<div class="attribute" id="${param_prefix}attributes__attribute.heart_weights__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.heart_weights" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_weights'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_weights','Heart Weights'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_weights'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_weights');
+  }  "/>Heart Weights
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.heart_weights_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.heart_weights_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_weights_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_weights_comment','Heart Weights Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_weights_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_weights_comment');
+  }  "/>Heart Weights Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.heart_weights_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.heart_weights_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_weights_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_weights_url','Heart Weights URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.heart_weights_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.heart_weights_url');
+  }  "/>Heart Weights URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.homozygote_viability__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.homozygote_viability" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.homozygote_viability'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.homozygote_viability','Homozygote Viability'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.homozygote_viability'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.homozygote_viability');
+  }  "/>Homozygote Viability
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.homozygote_viability_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.homozygote_viability_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.homozygote_viability_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.homozygote_viability_comment','Homozygote Viability Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.homozygote_viability_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.homozygote_viability_comment');
+  }  "/>Homozygote Viability Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.hot_plate__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.hot_plate" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.hot_plate'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.hot_plate','Hot Plate'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.hot_plate'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.hot_plate');
+  }  "/>Hot Plate
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.hot_plate_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.hot_plate_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.hot_plate_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.hot_plate_comment','Hot Plate Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.hot_plate_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.hot_plate_comment');
+  }  "/>Hot Plate Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.hot_plate_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.hot_plate_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.hot_plate_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.hot_plate_url','Hot Plate URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.hot_plate_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.hot_plate_url');
+  }  "/>Hot Plate URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.histology__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.histology" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.histology'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.histology','Histology'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.histology'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.histology');
+  }  "/>Histology
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.histology_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.histology_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.histology_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.histology_comment','Histology Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.histology_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.histology_comment');
+  }  "/>Histology Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.insulin__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.insulin" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.insulin'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.insulin','Insulin'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.insulin'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.insulin');
+  }  "/>Insulin
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.insulin_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.insulin_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.insulin_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.insulin_comment','Insulin Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.insulin_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.insulin_comment');
+  }  "/>Insulin Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.ip_gtt__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.ip_gtt" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.ip_gtt'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.ip_gtt','IP-GTT'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.ip_gtt'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.ip_gtt');
+  }  "/>IP-GTT
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.ip_gtt_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.ip_gtt_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.ip_gtt_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.ip_gtt_comment','IP-GTT Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.ip_gtt_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.ip_gtt_comment');
+  }  "/>IP-GTT Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.ip_gtt_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.ip_gtt_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.ip_gtt_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.ip_gtt_url','IP-GTT URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.ip_gtt_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.ip_gtt_url');
+  }  "/>IP-GTT URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.micronuclei__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.micronuclei" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.micronuclei'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.micronuclei','Micronuclei'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.micronuclei'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.micronuclei');
+  }  "/>Micronuclei
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.micronuclei_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.micronuclei_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.micronuclei_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.micronuclei_comment','Micronuclei Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.micronuclei_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.micronuclei_comment');
+  }  "/>Micronuclei Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.modified_shirpa__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.modified_shirpa" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.modified_shirpa'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.modified_shirpa','Modified Shirpa'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.modified_shirpa'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.modified_shirpa');
+  }  "/>Modified Shirpa
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.modified_shirpa_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.modified_shirpa_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.modified_shirpa_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.modified_shirpa_comment','Modified Shirpa Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.modified_shirpa_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.modified_shirpa_comment');
+  }  "/>Modified Shirpa Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.modified_shirpa_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.modified_shirpa_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.modified_shirpa_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.modified_shirpa_url','Modified Shirpa URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.modified_shirpa_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.modified_shirpa_url');
+  }  "/>Modified Shirpa URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.number_of_hits__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.number_of_hits" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.number_of_hits'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.number_of_hits','Number of Hits'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.number_of_hits'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.number_of_hits');
+  }  "/>Number of Hits
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.number_of_hits_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.number_of_hits_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.number_of_hits_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.number_of_hits_comment','Number of Hits Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.number_of_hits_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.number_of_hits_comment');
+  }  "/>Number of Hits Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.open_field__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.open_field" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.open_field'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.open_field','Open Field'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.open_field'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.open_field');
+  }  "/>Open Field
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.open_field_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.open_field_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.open_field_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.open_field_comment','Open Field Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.open_field_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.open_field_comment');
+  }  "/>Open Field Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.open_field_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.open_field_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.open_field_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.open_field_url','Open Field URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.open_field_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.open_field_url');
+  }  "/>Open Field URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.peripheral_blood_lymphocytes__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.peripheral_blood_lymphocytes" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.peripheral_blood_lymphocytes'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.peripheral_blood_lymphocytes','Peripheral Blood Lymphocytes'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.peripheral_blood_lymphocytes'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.peripheral_blood_lymphocytes');
+  }  "/>Peripheral Blood Lymphocytes
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.peripheral_blood_lymphocytes_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.peripheral_blood_lymphocytes_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.peripheral_blood_lymphocytes_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.peripheral_blood_lymphocytes_comment','Peripheral Blood Lymphocytes Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.peripheral_blood_lymphocytes_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.peripheral_blood_lymphocytes_comment');
+  }  "/>Peripheral Blood Lymphocytes Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.pipeline__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.pipeline" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.pipeline'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.pipeline','Pipeline'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.pipeline'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.pipeline');
+  }  "/>Pipeline
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.pipeline_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.pipeline_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.pipeline_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.pipeline_comment','Pipeline Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.pipeline_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.pipeline_comment');
+  }  "/>Pipeline Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.prepulse_inhibition__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.prepulse_inhibition" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.prepulse_inhibition'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.prepulse_inhibition','Prepulse Inhibition'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.prepulse_inhibition'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.prepulse_inhibition');
+  }  "/>Prepulse Inhibition
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.prepulse_inhibition_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.prepulse_inhibition_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.prepulse_inhibition_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.prepulse_inhibition_comment','Prepulse Inhibition Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.prepulse_inhibition_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.prepulse_inhibition_comment');
+  }  "/>Prepulse Inhibition Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.rotarod__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.rotarod" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.rotarod'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.rotarod','Rotarod'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.rotarod'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.rotarod');
+  }  "/>Rotarod
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.rotarod_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.rotarod_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.rotarod_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.rotarod_comment','Rotarod Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.rotarod_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.rotarod_comment');
+  }  "/>Rotarod Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.rotarod_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.rotarod_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.rotarod_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.rotarod_url','Rotarod URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.rotarod_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.rotarod_url');
+  }  "/>Rotarod URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.recessive_lethal_study__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.recessive_lethal_study" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.recessive_lethal_study'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.recessive_lethal_study','Recessive Lethal Study'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.recessive_lethal_study'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.recessive_lethal_study');
+  }  "/>Recessive Lethal Study
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.recessive_lethal_study_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.recessive_lethal_study_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.recessive_lethal_study_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.recessive_lethal_study_comment','Recessive Lethal Study Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.recessive_lethal_study_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.recessive_lethal_study_comment');
+  }  "/>Recessive Lethal Study Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.serum_immunoglobulins__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.serum_immunoglobulins" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.serum_immunoglobulins'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.serum_immunoglobulins','Serum Immunoglobulins'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.serum_immunoglobulins'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.serum_immunoglobulins');
+  }  "/>Serum Immunoglobulins
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.serum_immunoglobulins_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.serum_immunoglobulins_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.serum_immunoglobulins_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.serum_immunoglobulins_comment','Serum Immunoglobulins Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.serum_immunoglobulins_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.serum_immunoglobulins_comment');
+  }  "/>Serum Immunoglobulins Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.skin_screen__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.skin_screen" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.skin_screen'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.skin_screen','Skin Screen'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.skin_screen'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.skin_screen');
+  }  "/>Skin Screen
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.skin_screen_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.skin_screen_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.skin_screen_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.skin_screen_comment','Skin Screen Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.skin_screen_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.skin_screen_comment');
+  }  "/>Skin Screen Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.skin_screen_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.skin_screen_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.skin_screen_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.skin_screen_url','Skin Screen URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.skin_screen_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.skin_screen_url');
+  }  "/>Skin Screen URL
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.tail_length__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.tail_length" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.tail_length'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.tail_length','Tail Length'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.tail_length'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.tail_length');
+  }  "/>Tail Length
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.tail_length_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.tail_length_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.tail_length_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.tail_length_comment','Tail Length Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.tail_length_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.tail_length_comment');
+  }  "/>Tail Length Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.x_ray_imaging__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.x_ray_imaging" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.x_ray_imaging'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.x_ray_imaging','X-Ray Imaging'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.x_ray_imaging'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.x_ray_imaging');
+  }  "/>X-Ray Imaging
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.x_ray_imaging_comment__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.x_ray_imaging_comment" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.x_ray_imaging_comment'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.x_ray_imaging_comment','X-Ray Imaging Comment'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.x_ray_imaging_comment'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.x_ray_imaging_comment');
+  }  "/>X-Ray Imaging Comment
+
+</div>
+<div class="attribute" id="${param_prefix}attributes__attribute.x_ray_imaging_url__container">
+  <input type="checkbox" name="${param_prefix}attributes__attribute.x_ray_imaging_url" 
+  onclick="check('[* param_prefix*]attributes__attributecollection.pheno_tests_a', 0); 
+  check('[* param_prefix*]attributes__attributecollection.pheno_tests_n', 0);
+  onchange();"
+   
+  onchange="if(this.checked)
+  {	
+  	document.mainform.elements['${param_prefix}attributes__attribute.x_ray_imaging_url'].value = 'on';
+  	addToSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.x_ray_imaging_url','X-Ray Imaging URL'); 
+  }
+  else
+  {
+  	document.mainform.elements['${param_prefix}attributes__attribute.x_ray_imaging_url'].value = 'off'; 
+  	removeFromSummaryPanelList('${param_prefix}attributes__attributelist', '${param_prefix}attributes__attribute.x_ray_imaging_url');
+  }  "/>X-Ray Imaging URL
+
+</div>
+
+</td>
+</tr>
+</table>
+
+
+
+
+
+</div>
+
+<!-- this is just a dummy div to prevent the contents of last attribute collection from falling out of div - only happens in IE 6 -->
+<div class="collectionBREAK"></div>
+</div>
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// Update summary-tree on side panel according to enabled-attributes info stored in 
+// the session OR the list of default attributes to pre-enable (if any).
+
+[* atts_to_check = session.param("${vs_param_prefix}attributes__attributelist") *]
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+//1: atts_to_check=     '[* atts_to_check || "[undef]" *]'
+//1: atts_to_check.size='[* atts_to_check.size() || "[undef]" *]'
+
+[* IF !atts_to_check || atts_to_check == ' ' *]
+  [* atts_to_check = ["${param_prefix}attributes__attribute.marker_symbol","${param_prefix}attributes__attribute.escell_clone_name"]  *]
+[* END *]
+       
+// default_attributes.join()='[* default_attributes.join('|') *]'
+//1: atts_to_check.join()=     '[* atts_to_check.join('|') *]'
+[* tmp_array = [] *]
+[* FOREACH att = atts_to_check *]
+  [* NEXT IF att == " " *]
+  [* tmp_array.push("'$att' : ''") *]
+[* END *]
+
+for(var attributeEltName in {
+
+[* tmp_array.join(",\n") *]
+
+}) {
+    var attributeCheckboxElt = document.mainform.elements[attributeEltName];
+    //alert('Updating summary panel with enabled attribute '+attributeEltName);
+    if(attributeCheckboxElt && attributeCheckboxElt.type == 'checkbox') {
+      attributeCheckboxElt.checked = 'checked';
+      attributeCheckboxElt.onchange();
+    }
+    else {
+        //alert('Checkbox for attribute '+attributeEltName+' not found, trying attcollection radio buttons instead');
+        var attributeRadiobuttonElt = document.mainform.elements[attributeEltName];
+        if(attributeRadiobuttonElt) {
+            //alert('Updating summary panel with enabled (radiobutton) attribute '+attributeEltName);
+            attributeRadiobuttonElt.click();
+        }
+    }
+}
+
+
+//]]>
+</script>
+
+</div>
+</div>
+
+<script language="JavaScript" type="text/javascript" >
+//<![CDATA[
+
+// On initial page-load, set one att-page as the current visible one
+showPanelHideSiblings(document.mainform['phenotyping__attributepages__current_visible_section'].value);
+
+// Also expand attribute-list for the active attpage for this dataset
+var attpage2expand;
+var attPageRadios = document.getElementsByName('phenotyping__attributepage');
+for(var i=0;i < attPageRadios.length;i++) { 
+    if(attPageRadios[i].checked) {
+        attpage2expand = 'phenotyping__'+attPageRadios[i].value;
+        break;
+    } 
+}
+expandListCompactSiblings(attpage2expand+'__attributelist');
+
+//]]>
+</script>
+
+</td>
+</tr>
+</table>
+
+</div>
+
+[* default_attributepage_for_export = "${param_prefix}attributes" *]
