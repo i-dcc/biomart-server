@@ -5,6 +5,7 @@ This is a straight CVS checkout of the 0.7 branch of biomart, with some small mo
 made for the projects within the I-DCC.
 
 Mods:
+
 * Modified CSS stylesheet and templates
 * Oracle database connections are case-insensitive
 * Inclusion of the 'server.rb' script
