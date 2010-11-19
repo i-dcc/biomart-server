@@ -101,11 +101,13 @@ def stop_start_server(cmd)
 end
 
 def build_template( template_file, output_file )
-  template = File.open( template_file, 'r' )
-  erb = ERB.new( template.read )
-  output = File.open( output_file, 'w' )
-  output.write( erb.result( binding ) )
-  output.close
+  if File.exists?( template_file )
+    template = File.open( template_file, 'r' )
+    erb = ERB.new( template.read )
+    output = File.open( output_file, 'w' )
+    output.write( erb.result( binding ) )
+    output.close
+  end
 end
 
 ##
@@ -133,12 +135,13 @@ if @@stop
   stop_start_server('stop')
 end
 
-# Rebuild the config files
+# Rebuild the config/template files
 build_template( "../rebuild/templates/settings.conf.erb",      "conf/settings.conf" )
 build_template( "../rebuild/templates/martDBLocation.xml.erb", "conf/martDBLocation.xml" )
 build_template( "../rebuild/templates/log4perl.conf.erb",      "conf/log4perl.conf" )
 build_template( "../rebuild/templates/footer.tt.erb",          "conf/templates/custom/footer.tt" )
 build_template( "../rebuild/templates/header.tt.erb",          "conf/templates/custom/header.tt" )
+build_template( "../rebuild/templates/main.tt.erb",            "conf/templates/custom/main.tt" )
 
 # Reconfigure the biomart
 if @@reconfigure
