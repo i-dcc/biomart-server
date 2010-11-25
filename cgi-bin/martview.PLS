@@ -96,6 +96,20 @@ else
 # Pass request object to the main method of webquery-class
 
 eval {
+    ## EDIT by do2
+    
+    # As our marts are behind a double proxy we want the first 
+    # proxy server to be the top level domain, therefore we need to 
+    # extract the first entry in the http_x_forwrded_* variables.
+    #
+    # (The 'correct' action for this - done by CGI.pm etc - is to use 
+    # the last entry in these strings, but we don't want this).
+    
+    ($ENV{'HTTP_X_FORWARDED_FOR'})  = $ENV{'HTTP_X_FORWARDED_FOR'}  =~ qr/^([^,]+)/;
+    ($ENV{'HTTP_X_FORWARDED_HOST'}) = $ENV{'HTTP_X_FORWARDED_HOST'} =~ qr/^([^,]+)/;
+    
+    ## END OF EDIT
+    
     $WEBQUERY->handle_request($CGI);
 };
 
