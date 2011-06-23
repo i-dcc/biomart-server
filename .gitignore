@@ -2,3 +2,4 @@
 .svn*
 *CVS*
 *.#*
+.DS_Store
